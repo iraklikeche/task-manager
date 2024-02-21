@@ -1,8 +1,4 @@
-{{-- @props(['name','type' => 'text','placeholder'])
 
-<input name="{{$name}}" type="{{$type}}" id="{{$name}}" /> --}}
-
-{{-- resources/views/components/input.blade.php --}}
 @props(['name', 'type' => 'text', 'placeholder'])
 
 <input name="{{ $name }}" type="{{ $type }}" id="{{ $name }}" placeholder="{{ $placeholder }}"
