@@ -7,7 +7,7 @@
        delete old tasks
       </button>
 
-      <button class="flex gap-4 items-center bg-[#499af9] py-2 px-6 uppercase border
+      <a href="/dashboard/create" class="flex gap-4 items-center bg-[#499af9] py-2 px-6 uppercase border
        border-[#499af9] rounded-xl text-xs font-bold text-white
        hover:bg-[#496cf9] transition-colors tracking-wide"
        >
@@ -16,7 +16,7 @@
 
          Add task
         </span>
-      </button>
+      </a>
     </div>
   </div>
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
