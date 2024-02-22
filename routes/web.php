@@ -23,6 +23,5 @@ Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::post('login',[SessionController::class,'store']);
 Route::post('logout',[SessionController::class,'destroy'])->middleware('auth');
 
-Route::get('/dashboard',function(){
-    return view('tasks.adminPanel');
-})->middleware('auth');
+Route::view('/dashboard', 'tasks.adminPanel')->middleware('auth');
+
