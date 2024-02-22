@@ -1,4 +1,3 @@
-<div class="flex flex-col pt-24 w-full px-10">
   <div class="flex justify-between items-center mb-6">
     <h1 class="uppercase text-3xl font-semibold pl-2">Your tasks</h1>
     <div class="flex gap-4">
@@ -58,7 +57,7 @@
                 23/06/2013
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <a href="#" class="text-[#2f363d] hover:text-black underline">Edit</a>
+                <a href="/dashboard/edit" class="text-[#2f363d] hover:text-black underline">Edit</a>
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Delete</a>
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
               </td>
@@ -70,5 +69,3 @@
      
     </div>
   </div>
-  <x-langButtons />
-</div>
