@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -11,11 +12,8 @@ class SessionController extends Controller
         return view('welcome');
     }
 
-    public function store(Request $request){
-        $credentials = $request->validate([
-            'email' => ['required', 'email'],
-            'password' => ['required']
-        ]);
+    public function store(StoreUserRequest $request){
+        $credentials = $request->validated();
 
         if(Auth::attempt($credentials)){
 
