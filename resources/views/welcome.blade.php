@@ -28,7 +28,7 @@
                 <button>English</button>
                 <button>ქართული</button>
             </div>
-      
+
         </div>
     </div>   
   </x-layout>
