@@ -25,10 +25,8 @@
                 </div>
             </form>
   
-            <div class="mt-auto flex justify-center gap-4">
-                <button>English</button>
-                <button>ქართული</button>
-            </div>
+            <x-langButtons />
+
 
         </div>
     </div>   
