@@ -9,7 +9,7 @@
       <x-form.textarea  type="text" placeholder="Description name in English" name="description" >{{ old('taskge') }}</x-form.textarea>
       <x-form.textarea  type="text" placeholder="Description name in Georgian" name="descriptionge" >{{ old('taskge') }}</x-form.textarea>
       <x-form.input type="date"  name="date" value="{{ old('date') }}" placeholder=""  />
-      <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white font-semibold">Create Task</button>
+      <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white">Create Task</button>
     </form>
   </div>
 </x-panel-layout>
