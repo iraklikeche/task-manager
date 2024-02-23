@@ -1,4 +1,5 @@
 <x-panel-layout class="pr-64">
+  {{-- I'll keep it like this, till you merge previous if it's okay --}}
   <div class="mx-auto w-96 flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">Profile</h1>
     
