@@ -22,5 +22,9 @@ Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::post('login',[SessionController::class,'store']);
 Route::post('/logout',[SessionController::class,'destroy'])->middleware('auth');
 
-Route::view('/dashboard', 'tasks.adminPanel')->middleware('auth');
 
+Route::middleware(['auth'])->prefix('dashboard')->group(function () {
+  Route::view('/', 'tasks.adminPanel')->name('dashboard');
+  Route::view('/show', 'tasks.show')->name('dashboard.show');
+  Route::view('/create', 'tasks.create')->name('dashboard.create');
+});
