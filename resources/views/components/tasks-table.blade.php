@@ -7,7 +7,7 @@
        delete old tasks
       </button>
 
-      <a href="/dashboard/create" class="flex gap-4 items-center bg-[#499af9] py-2 px-6 uppercase border
+      <a href="{{ route('dashboard.create') }}" class="flex gap-4 items-center bg-[#499af9] py-2 px-6 uppercase border
        border-[#499af9] rounded-xl text-xs font-bold text-white
        hover:bg-[#496cf9] transition-colors tracking-wide"
        >
@@ -57,9 +57,11 @@
                 23/06/2013
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <a href="/dashboard/edit" class="text-[#2f363d] hover:text-black underline">Edit</a>
+                {{-- I don't have edit page yet. That's why it is commented so far. --}}
+                {{-- <a href="{{ route('dashboard.edit') }}" class="text-[#2f363d] hover:text-black underline">Edit</a> --}}
+                {{-- To Do Delete functionality. I'll keep it as it is so far, if it's okay --}}
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Delete</a>
-                <a href="/dashboard/show" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
+                <a href="{{ route('dashboard.show') }}" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
               </td>
             </tr>
 
