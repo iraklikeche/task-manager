@@ -59,7 +59,7 @@
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                 <a href="/dashboard/edit" class="text-[#2f363d] hover:text-black underline">Edit</a>
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Delete</a>
-                <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
+                <a href="/dashboard/show" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
               </td>
             </tr>
 

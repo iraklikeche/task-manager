@@ -23,6 +23,6 @@ Route::post('login',[SessionController::class,'store']);
 Route::post('/logout',[SessionController::class,'destroy'])->middleware('auth');
 
 Route::view('/dashboard', 'tasks.adminPanel')->middleware('auth');
-Route::view('/dashboard/edit', 'tasks.edit')->middleware('auth');
+Route::view('/dashboard/show', 'tasks.show')->middleware('auth');
 Route::view('/dashboard/create', 'tasks.create')->middleware('auth');
 

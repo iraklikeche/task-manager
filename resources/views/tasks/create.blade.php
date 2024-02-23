@@ -1,14 +1,15 @@
-<x-panel-layout>
-  <div class="flex justify-center flex-col">
-    <h1 class="uppercase font-bold text-3xl">Create Task</h1>
+<x-panel-layout class="pr-64">
+  <div class="mx-auto w-96 flex flex-col gap-10">
+    <h1 class="uppercase font-semibold text-3xl text-center">Create Task</h1>
     
-    <div class="max-w-md">
-      <form class="flex flex-col">
-        @csrf
-        <x-form.input type="text" placeholder="Task name in English" name="task" value="{{ old('task') }}"  />
-        <x-form.input type="text" placeholder="Task name in Georgian" name="taskge" value="{{ old('taskge') }}"  />
-        <x-form.input type="date"  name="date" value="{{ old('date') }}" placeholder=""  />  
-      </form>
-    </div>
+    <form class="flex flex-col gap-10">
+      @csrf
+      <x-form.input type="text" placeholder="Task name in English" name="task" value="{{ old('task') }}"  />
+      <x-form.input type="text" placeholder="Task name in Georgian" name="taskge" value="{{ old('taskge') }}"  />
+      <x-form.textarea  type="text" placeholder="Description name in English" name="description" >{{ old('taskge') }}</x-form.textarea>
+      <x-form.textarea  type="text" placeholder="Description name in Georgian" name="descriptionge" >{{ old('taskge') }}</x-form.textarea>
+      <x-form.input type="date"  name="date" value="{{ old('date') }}" placeholder=""  />
+      <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white font-semibold">Create Task</button>
+    </form>
   </div>
 </x-panel-layout>
