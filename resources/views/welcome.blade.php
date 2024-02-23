@@ -17,7 +17,7 @@
                 
                 <x-form.input type="email" placeholder="Type your email" name="email" value="{{ old('email') }}"  />
                     <x-form.input type="password" placeholder="Write your Password" name="password" />
-                    <x-icons.show />
+                    <x-icons.show />                  
                 <div class="w-full">
                     <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-xl focus:outline-none focus:shadow-outline" type="submit">
                         LOG IN

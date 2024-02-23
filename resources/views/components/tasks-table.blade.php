@@ -57,8 +57,7 @@
                 23/06/2013
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                {{-- I don't have edit page yet. That's why it is commented so far. --}}
-                {{-- <a href="{{ route('dashboard.edit') }}" class="text-[#2f363d] hover:text-black underline">Edit</a> --}}
+                <a href="{{ route('dashboard.edit') }}" class="text-[#2f363d] hover:text-black underline">Edit</a>
                 {{-- To Do Delete functionality. I'll keep it as it is so far, if it's okay --}}
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Delete</a>
                 <a href="{{ route('dashboard.show') }}" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>

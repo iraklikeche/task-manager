@@ -27,4 +27,5 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
   Route::view('/', 'tasks.adminPanel')->name('dashboard');
   Route::view('/show', 'tasks.show')->name('dashboard.show');
   Route::view('/create', 'tasks.create')->name('dashboard.create');
+  Route::view('/edit', 'tasks.edit')->name('dashboard.edit');
 });
