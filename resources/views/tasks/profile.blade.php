@@ -9,9 +9,9 @@
 
       <div class="flex flex-col gap-4">
         <h2 class="uppercase text-[#2f363d] text-center">Change Password</h2>
-        <x-form.input type="password" placeholder="Current Password" name="currpass"   value="" />
-        <x-form.input type="password" placeholder="new Password" name="newpass" value="" />
-        <x-form.input type="password" placeholder="Retype new Password" name="renewpass" value=""  />
+        <x-form.input type="password" placeholder="Current Password" name="curr-pass"   value="" />
+        <x-form.input type="password" placeholder="new Password" name="new-pass" value="" />
+        <x-form.input type="password" placeholder="Retype new Password" name="re-new-pass" value=""  />
       </div>
 
       <div class="flex flex-col gap-4 m-6">
@@ -19,7 +19,7 @@
         <div class="flex items-center gap-4">
           <img src="{{ asset('images/defaults/avatar.png') }}" class="w-24"/>
 
-          <x-form.input type="file" name="profilePhoto" placeholder="" value="{{ old('profilePhoto') }}"  />
+          <x-form.input type="file" name="profile-photo" placeholder="" value="{{ old('profilePhoto') }}"  />
           <a href="#" class="uppercase">Delete</a>
         </div>
         <div class="flex items-center gap-4">
