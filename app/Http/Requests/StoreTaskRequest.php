@@ -19,27 +19,11 @@ class StoreTaskRequest extends FormRequest
     public function rules(): array
     {
         return [
-                'task.en' => [
-                    'required',
-                    'min:3',
-                    'regex:/^[A-Za-z\s]+$/'
-                ],
-                'task.ge' => [
-                    'required',
-                    'min:3',
-                    'regex:/^[ა-ჰ\s]+$/u'
-                ],                'description.en' => 'required|string',
-                'description.en' => [
-                    'required',
-                    'min:3',
-                    'regex:/^[A-Za-z\s]+$/'
-                ],
-                'description.ge' => [
-                    'required',
-                    'min:3',
-                    'regex:/^[ა-ჰ\s]+$/u'
-                ],
-                'date' => 'required|date',
+            'name_en' => 'required|min:3|regex:/^[A-Za-z\s]+$/',
+            'name_ge' => 'required|min:3|regex:/^[ა-ჰ\s]+$/u',
+            'description_en' => 'required|min:3|regex:/^[A-Za-z\s]+$/',
+            'description_ge' => 'required|min:3|regex:/^[ა-ჰ\s]+$/u',
+            'due_date' => 'required|date',
     
         ];
     }

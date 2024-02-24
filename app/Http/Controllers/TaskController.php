@@ -23,5 +23,14 @@ class TaskController extends Controller
     {
         $validated = $request->validated();
 
+        $task = new Task();
+        $task->user_id = auth()->id(); 
+        $task->name = $validated['name_en']; 
+        $task->description = $validated['description_en']; 
+        $task->due_date = $validated['due_date'];
+        $task->save();
+    
+        return redirect()->route('dashboard')->with('success', 'Task created successfully!');
+
     }
 }
