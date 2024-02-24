@@ -18,11 +18,10 @@ class TaskFactory extends Factory
      */
     public function definition(): array
     {
-        $user = User::first();
+
 
 
         return [
-            'user_id' => $user->id,
             'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
             'due_date' => Carbon::now()->addDays(rand(1, 30)),

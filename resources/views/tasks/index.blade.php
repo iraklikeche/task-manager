@@ -9,7 +9,7 @@
       </button>
 
       <a href="{{ route('dashboard.create') }}" class="flex gap-4 items-center bg-custom-blue py-2 px-6 uppercase border
-       border-custom-blue selection:rounded-xl text-xs font-bold text-white
+       border-custom-blue selection:rounded-xl text-xs font-bold text-white rounded-xl
        hover:bg-[#496cf9] transition-colors tracking-wide"
        >
        <x-icons.add />
