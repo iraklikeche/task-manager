@@ -43,26 +43,29 @@
             </tr>
           </thead>
           <tbody class="bg-white divide-y divide-gray-200">
+            @foreach ($tasks as $task)
+              
             <tr>
               <td class="px-2 py-4 whitespace-nowrap text-[#6a737d]">
-                Call Jim and ask about the quote
+                {{$task->name}}
               </td>
               <td class="px-2 py-4 whitespace-nowrap text-[#6a737d]">
-                Systematic characterization and documentation
+                {{$task->description}}
               </td>
               <td class="px-2 py-4 whitespace-nowrap text-[#6a737d]">
-                23/06/2013
+                {{$task->created_at}}
               </td>
               <td class="px-2 py-4 whitespace-nowrap text-[#6a737d]">
-                23/06/2013
+                {{$task->due_date}}    
               </td>
               <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                <a href="{{ route('dashboard.edit') }}" class="text-[#2f363d] hover:text-black underline">Edit</a>
+                <a href="{{ route('dashboard.edit',$task->id) }}" class="text-[#2f363d] hover:text-black underline">Edit</a>
                 {{-- To Do Delete functionality. I'll keep it as it is so far, if it's okay --}}
                 <a href="#" class="text-[#2f363d] hover:text-black underline ml-4">Delete</a>
-                <a href="{{ route('dashboard.show') }}" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
+                <a href="{{ route('dashboard.show',$task->id)  }}" class="text-[#2f363d] hover:text-black underline ml-4">Show</a>
               </td>
             </tr>
+            @endforeach
 
           </tbody>
         </table>
