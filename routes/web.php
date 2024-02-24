@@ -25,7 +25,6 @@ Route::post('/logout',[SessionController::class,'destroy'])->middleware('auth');
 
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-  // Route::view('/', 'tasks.adminPanel')->name('dashboard');
   Route::get('/', [TaskController::class, 'index'])->name('dashboard');
 
   Route::view('/show', 'tasks.show')->name('dashboard.show');
