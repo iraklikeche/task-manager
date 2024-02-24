@@ -24,7 +24,6 @@ class StoreTaskRequest extends FormRequest
             'description_en' => 'required|min:3|regex:/^[A-Za-z\s]+$/',
             'description_ge' => 'required|min:3|regex:/^[ა-ჰ\s]+$/u',
             'due_date' => 'required|date',
-    
         ];
     }
 }

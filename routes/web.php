@@ -29,10 +29,13 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
   Route::controller(TaskController::class)->group(function () {
     Route::get('/', 'index')->name('dashboard');
     Route::get('/dashboard/show/{task}', 'show')->name('dashboard.show');
+    Route::get('/dashboard/edit/{task}', 'edit')->name('dashboard.edit');
+    Route::put('/dashboard/tasks/{task}', 'update')->name('tasks.update');
+
     Route::post('/tasks', 'store')->name('tasks.store');
 });
 
   Route::view('/create', 'tasks.create')->name('dashboard.create');
-  Route::view('/edit', 'tasks.edit')->name('dashboard.edit');
+  // Route::view('/edit', 'tasks.edit')->name('dashboard.edit');
   Route::view('/profile', 'tasks.profile')->name('dashboard.profile');
 });
