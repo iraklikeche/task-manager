@@ -26,9 +26,11 @@ Route::post('/logout',[SessionController::class,'destroy'])->middleware('auth');
 
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-  Route::get('/', [TaskController::class, 'index'])->name('dashboard');
-  Route::get('/dashboard/show/{task}', [TaskController::class, 'show'])->name('dashboard.show');
-  Route::post('/tasks', [TaskController::class, 'store'])->name('tasks.store');
+  Route::controller(TaskController::class)->group(function () {
+    Route::get('/', 'index')->name('dashboard');
+    Route::get('/dashboard/show/{task}', 'show')->name('dashboard.show');
+    Route::post('/tasks', 'store')->name('tasks.store');
+});
 
   Route::view('/create', 'tasks.create')->name('dashboard.create');
   Route::view('/edit', 'tasks.edit')->name('dashboard.edit');
