@@ -3,7 +3,7 @@
    {{$slot}}
     <div class="mx-auto w-96 flex flex-col gap-10">
        <h1 class="uppercase font-semibold text-3xl text-center">{{$heading}}</h1>
-        <form class="flex flex-col gap-10">
+        <form action="{{ route('tasks.store') }}" method="POST" class="flex flex-col gap-10">
            @csrf
           <x-form.input type="text" placeholder="Task name in English" name="task.en" value="{{ old('task.en') }}"  />
           <x-form.input type="text" placeholder="Task name in Georgian" name="task.ge" value="{{ old('task.ge') }}"  />
