@@ -47,19 +47,19 @@
             @foreach ($tasks as $task)
               
             <tr>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
+              <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[150px]">
                 {{$task->name}}
               </td>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
+              <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[250px]">
                 {{$task->description}}
               </td>
               <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
-                {{$task->created_at}}
+                {{$task->created_at->format('Y-m-d')}}
               </td>
               <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
-                {{$task->due_date}}    
+                {{$task->due_date}} 
               </td>
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
+              <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
                 <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
                 {{-- To Do Delete functionality. I'll keep it as it is so far, if it's okay --}}
                 <a href="#" class=" hover:text-black underline ml-4">Delete</a>
