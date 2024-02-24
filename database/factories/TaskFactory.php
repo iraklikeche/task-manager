@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -24,7 +25,7 @@ class TaskFactory extends Factory
             'user_id' => $user->id,
             'name' => $this->faker->sentence(),
             'description' => $this->faker->paragraph(),
-            'due_date' => "2024-03-01",
+            'due_date' => Carbon::now()->addDays(rand(1, 30)),
         ];
     }
 }
