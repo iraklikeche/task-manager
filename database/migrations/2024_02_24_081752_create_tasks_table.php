@@ -19,8 +19,7 @@ return new class extends Migration
             $table->dateTime('due_date');
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
+            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
         });
     }
 
