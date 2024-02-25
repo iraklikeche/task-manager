@@ -9,4 +9,9 @@ class Task extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    
+    public function scopeOverdue($query)
+{
+    return $query->where('due_date', '<', now());
+}
 }

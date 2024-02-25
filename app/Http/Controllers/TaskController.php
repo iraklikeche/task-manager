@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
-use Illuminate\Contracts\Session\Session;
-use Illuminate\Support\Facades\Session as FacadesSession;
-use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
+use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $tasks = Task::all();
+        $query = Task::query();
+
+        $tasks = auth()->user()->tasks()
+        ->when($request->query('due') === 'true', fn($query) => $query->overdue())
+        ->get();
+
         return view('tasks.index',compact('tasks'));
     }
 
