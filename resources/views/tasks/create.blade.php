@@ -1,1 +1,1 @@
-<x-taskForm-layout name="Create Task" heading="Create Task" operation="create" />
+<x-taskForm-layout name="Create Task" heading="Create Task"/>
