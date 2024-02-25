@@ -62,7 +62,12 @@
               <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
                 <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
                 {{-- To Do Delete functionality. I'll keep it as it is so far, if it's okay --}}
-                <a href="#" class=" hover:text-black underline ml-4">Delete</a>
+                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" style="display: inline;">
+                  @csrf
+                  @method('DELETE')
+                  <button type="submit" class=" hover:text-black underline ml-4">Delete</button>
+              </form>
+                {{-- <a href="#" class=" hover:text-black underline ml-4">Delete</a> --}}
                 <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">Show</a>
               </td>
             </tr>

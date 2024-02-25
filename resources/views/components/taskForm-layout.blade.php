@@ -17,18 +17,21 @@
       @method('PUT')
   @endif
 
-  <x-form.input type="text" placeholder="Task name in English" name="name.en" value="{{ old('name_en', $task->name ?? '') }}"
+
+  <x-form.input type="text" placeholder="Task name in English" name="name[en]" value="{{ old('name.en', $task->name ?? '') }}"
   /> 
-  <x-form.input type="text" placeholder="Task name in Georgian" name="name.ge" value="{{ old('name_ge', $task->name ?? '') }}"
+
+  <x-form.input type="text" placeholder="Task name in Georgian" name="name[ge]" value="{{ old('name.ge', $task->name ?? '') }}"
   />
 
-<x-form.textarea placeholder="Description in English" name="description.en" >
-  {{ $task->description ?? ""}} 
-</x-form.textarea>
 
-<x-form.textarea placeholder="Description in Georgian" name="description.ge">
-  {{ $task->description ?? ""}}
-</x-form.textarea>
+  <x-form.textarea placeholder="Description in English" name="description[en]" >
+    {{ $task->description ?? ""}} 
+  </x-form.textarea>
+
+  <x-form.textarea placeholder="Description in Georgian" name="description[ge]">
+    {{ $task->description ?? ""}}
+  </x-form.textarea>
   <x-form.input type="date" name="due_date" value="{{ old('due_date', isset($task->due_date) ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : '') }}" placeholder=""/>
   <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white">
       {{$formMethod === 'PUT' ? 'Update Task' : 'Create Task'}}

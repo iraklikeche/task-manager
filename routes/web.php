@@ -31,7 +31,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
     Route::get('/dashboard/show/{task}', 'show')->name('dashboard.show');
     Route::get('/dashboard/edit/{task}', 'edit')->name('dashboard.edit');
     Route::put('/dashboard/tasks/{task}', 'update')->name('tasks.update');
-
+    Route::delete('/dashboard/tasks/{task}', 'destroy')->name('tasks.destroy');
     Route::post('/tasks', 'store')->name('tasks.store');
 });
 
