@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
-use Illuminate\Http\Request;
+use Illuminate\Contracts\Session\Session;
+use Illuminate\Support\Facades\Session as FacadesSession;
+use Symfony\Component\HttpFoundation\Session\Session as SessionSession;
 
 class TaskController extends Controller
 {
@@ -19,18 +21,53 @@ class TaskController extends Controller
         return view('tasks.show', compact('task'));
     }
 
-    public function store(StoreTaskRequest $request)
+    public function edit(Task $task)
+    {
+        return view('tasks.edit', compact('task'));
+
+    }
+
+    public function update(StoreTaskRequest $request,Task $task)
     {
         $validated = $request->validated();
+        $name = $validated['name']['en'];
+        $description = $validated['description']['en'];
+
+        $task->update([
+            'name' => $name,
+            'description' => $description,
+            'due_date' => $validated['due_date'],
+        ]);
+    
+        return redirect()->route('dashboard')->with('success', 'Task updated successfully!');
+
+    }
+
+    public function store(StoreTaskRequest $request)
+    {
+
+        $validated = $request->validated();
+        $name = $validated['name']['en'];
+        $description = $validated['description']['en'];
+
+
 
         Task::create([
             'user_id' => auth()->id(),
-            'name' => $validated['name_en'],
-            'description' => $validated['description_en'], 
+            'name' => $name,
+            'description' => $description, 
             'due_date' => $validated['due_date'], 
         ]);
+
     
         return redirect()->route('dashboard')->with('success', 'Task created successfully!');
+
+    }
+
+    public function destroy(Task $task)
+    {
+        $task->delete();
+        return redirect()->route('dashboard')->with('success', 'Task deleted successfully.');
 
     }
 }

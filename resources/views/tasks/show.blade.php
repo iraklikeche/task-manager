@@ -26,7 +26,7 @@
       </div>
       <div class="flex flex-col gap-2">
         <span class="text-[#6a737d] ">Due date</span>
-        <span>{{$task->due_date}}</span>
+        <span>{{\Carbon\Carbon::parse($task->due_date)->format('Y-m-d')}}</span>
       </div>
     </div>
   </div>
