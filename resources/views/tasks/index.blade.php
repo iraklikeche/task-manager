@@ -2,11 +2,15 @@
   <div class="flex justify-between items-center mb-6">
     <h1 class="uppercase text-3xl font-semibold pl-2">Your tasks</h1>
     <div class="flex gap-4">
-      <button class="text-custom-blue py-2 px-6 uppercase border border-custom-blue
-       rounded-xl text-xs font-bold hover:bg-custom-blue hover:text-white transition-colors tracking-wide"
-       >
-       delete old tasks
-      </button>
+      <form action="{{ route('tasks.deleteOverdue') }}" method="POST">
+        @csrf
+        @method('DELETE')
+        <button type="submit" class="text-custom-blue py-3 px-6 uppercase border border-custom-blue
+        rounded-xl text-xs font-bold hover:bg-custom-blue hover:text-white transition-colors tracking-wide">
+        delete old tasks
+        </button>
+    </form>
+    
 
       <a href="{{ route('dashboard.create') }}" class="flex gap-4 items-center bg-custom-blue py-2 px-6 uppercase border
        border-custom-blue selection:rounded-xl text-xs font-bold text-white rounded-xl

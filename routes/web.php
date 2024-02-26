@@ -29,6 +29,7 @@ Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 		Route::get('/', 'index')->name('dashboard');
 		Route::get('/show/{task}', 'show')->name('dashboard.show');
 		Route::get('/edit/{task}', 'edit')->name('dashboard.edit');
+		Route::delete('/overdue-tasks', 'deleteOverdueTasks')->name('tasks.deleteOverdue');
 
 		Route::prefix('tasks')->group(function () {
 			Route::put('/{task}', 'update')->name('tasks.update');
