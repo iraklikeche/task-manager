@@ -27,59 +27,62 @@
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
       <div class="shadow overflow-hidden  sm:rounded-lg">
-        <table class="min-w-full divide-y divide-gray-200">
-          <thead>
-            <tr class="text-left text-xs text-black font-semibold uppercase tracking-wider">
-              <th scope="col" class=" px-2 py-3 ">
-                Task name
-              </th>
-              <th scope="col" class="px-2 py-3 ">
-                Description
-              </th>
-              <th scope="col" class="px-2 py-3 flex gap-2">
-                <span>Created at</span>
-                <a href="{{ route('dashboard', ['sort' => $sortOrder === 'desc' ? 'asc' : 'desc'] + request()->except('sort')) }}">
-                  <x-icons.sort />
-              </a>
-              </th>
-              <th scope="col" class="px-2 py-3 ">
-                Due Date
-              </th>
-              <th scope="col" class="px-2 py-3 ">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody class="bg-white divide-y divide-gray-200">
-            @foreach ($tasks as $task)
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead>
+              <tr class="text-left text-xs text-black font-semibold uppercase tracking-wider">
+                <th scope="col" class=" px-2 py-3">
+                  Task name
+                </th>
+                <th scope="col" class="px-2 py-3">
+                  Description
+                </th>
+                <th scope="col" class="px-2 py-3">
+                  <span class="relative">Created at</span>
+                  <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'created_at', 'order' => request('sort') === 'created_at' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                    <x-icons.sort />
+                  </a>
+                </th>
+                <th scope="col" class="px-2 py-3">
+                  <span class="relative">Due Date</span>
+                  <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'due_date', 'order' => request('sort') === 'due_date' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                    <x-icons.sort />
+                  </a>
+                </th>
+                <th scope="col" class="px-2 py-3">
+                  Actions
+                </th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200">
+              @foreach ($tasks as $task)
+                
+              <tr>
+                <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[150px]">
+                  {{$task->name}}
+                </td>
+                <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[250px]">
+                  {{$task->description}}
+                </td>
+                <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
+                  {{$task->created_at->format('Y-m-d')}}
+                </td>
+                <td class="px-2 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
+                  {{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') }}
+              </td>
               
-            <tr>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[150px]">
-                {{$task->name}}
-              </td>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[250px]">
-                {{$task->description}}
-              </td>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
-                {{$task->created_at->format('Y-m-d')}}
-              </td>
-              <td class="px-2 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
-                {{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') }}
-            </td>
-            
-              <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
-                <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
-                <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline">
-                  @csrf
-                  @method('DELETE')
-                  <button type="submit" class=" hover:text-black underline ml-4">Delete</button>
-              </form>
-                <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">Show</a>
-              </td>
-            </tr>
-            @endforeach
-          </tbody>
-        </table>
+                <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
+                  <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
+                  <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class=" hover:text-black underline ml-4">Delete</button>
+                </form>
+                  <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">Show</a>
+                </td>
+              </tr>
+              @endforeach
+            </tbody>
+          </table>
       </div>
      
     </div>

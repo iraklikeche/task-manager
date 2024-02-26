@@ -10,16 +10,15 @@ class TaskController extends Controller
 {
 	public function index(Request $request)
 	{
-		$sortOrder = $request->query('sort', 'desc') === 'asc' ? 'asc' : 'desc';
-
-		$query = Task::query();
+		$sortColumn = $request->query('sort', 'created_at');
+		$sortOrder = $request->query('order', 'desc') === 'asc' ? 'asc' : 'desc';
 
 		$tasks = auth()->user()->tasks()
-		->when($request->query('due') === 'true', fn ($query) => $query->overdue())
-		->orderBy('created_at', $sortOrder)
-		->get();
+					->when($request->query('due') === 'true', fn ($query) => $query->overdue())
+					->sortByField($sortColumn, $sortOrder)
+					->get();
 
-		return view('tasks.index', compact('tasks', 'sortOrder'));
+		return view('tasks.index', compact('tasks', 'sortColumn', 'sortOrder'));
 	}
 
 	public function show(Task $task)
