@@ -36,14 +36,14 @@
                 <th scope="col" class="px-2 py-3">
                   Description
                 </th>
-                <th scope="col" class="px-2 py-3">
-                  <span class="relative">Created at</span>
+                <th scope="col" class="px-2 py-3 relative">
+                  <span >Created at</span>
                   <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'created_at', 'order' => request('sort') === 'created_at' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
                     <x-icons.sort />
                   </a>
                 </th>
-                <th scope="col" class="px-2 py-3">
-                  <span class="relative">Due Date</span>
+                <th scope="col" class="px-2 py-3 relative">
+                  <span >Due Date</span>
                   <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'due_date', 'order' => request('sort') === 'due_date' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
                     <x-icons.sort />
                   </a>
