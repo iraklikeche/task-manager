@@ -14,7 +14,7 @@ class TaskController extends Controller
 
 		$tasks = auth()->user()->tasks()
 		->when($request->query('due') === 'true', fn ($query) => $query->overdue())
-		->get();
+		->latest()->get();
 
 		return view('tasks.index', compact('tasks'));
 	}
