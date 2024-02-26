@@ -65,4 +65,12 @@ class TaskController extends Controller
 		$task->delete();
 		return redirect()->route('dashboard')->with('success', 'Task deleted successfully.');
 	}
+
+	public function deleteOverdueTasks()
+	{
+		$user = auth()->user();
+		$user->tasks()->where('due_date', '<', now())->delete();
+
+		return back()->with('success', 'All overdue tasks have been deleted.');
+	}
 }

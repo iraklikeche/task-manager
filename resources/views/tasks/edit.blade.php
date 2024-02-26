@@ -4,4 +4,10 @@
   heading="Edit Task" 
   formAction="{{ route('tasks.update', $task->id) }}" 
   formMethod="PUT"
-/>
+>
+
+  <a href="{{ url()->previous() }}" class="flex items-center gap-4 uppercase font-semibold">
+    <x-icons.arrowBack /> <span>Back</span>
+  </a>
+
+</x-taskForm-layout>
