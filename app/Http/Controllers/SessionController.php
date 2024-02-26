@@ -8,14 +8,16 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function create(){
+    public function create()
+    {
         return view('welcome');
     }
 
-    public function store(StoreUserRequest $request){
+    public function store(StoreUserRequest $request)
+    {
         $credentials = $request->validated();
 
-        if(Auth::attempt($credentials)){
+        if(Auth::attempt($credentials)) {
 
             return redirect('/dashboard');
         }
