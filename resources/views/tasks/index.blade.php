@@ -80,12 +80,14 @@
                   <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">Show</a>
                 </td>
               </tr>
+
               @endforeach
             </tbody>
           </table>
+        </div>
       </div>
-     
     </div>
-  </div>
- 
-</x-panel-layout>
+    <div class="mt-10">
+      {{$tasks->links()}}
+    </div>
+  </x-panel-layout>
