@@ -36,8 +36,11 @@
               <th scope="col" class="px-2 py-3 ">
                 Description
               </th>
-              <th scope="col" class="px-2 py-3 ">
-                Created at
+              <th scope="col" class="px-2 py-3 flex gap-2">
+                <span>Created at</span>
+                <a href="{{ route('dashboard', ['sort' => $sortOrder === 'desc' ? 'asc' : 'desc'] + request()->except('sort')) }}">
+                  <x-icons.sort />
+              </a>
               </th>
               <th scope="col" class="px-2 py-3 ">
                 Due Date
