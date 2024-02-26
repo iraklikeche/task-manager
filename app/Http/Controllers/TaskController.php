@@ -16,7 +16,7 @@ class TaskController extends Controller
 		$tasks = auth()->user()->tasks()
 					->when($request->query('due') === 'true', fn ($query) => $query->overdue())
 					->sortByField($sortColumn, $sortOrder)
-					->get();
+					->paginate(8)->withQueryString();
 
 		return view('tasks.index', compact('tasks', 'sortColumn', 'sortOrder'));
 	}
