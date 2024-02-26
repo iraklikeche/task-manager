@@ -56,9 +56,10 @@
               <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
                 {{$task->created_at->format('Y-m-d')}}
               </td>
-              <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
-                {{\Carbon\Carbon::parse($task->due_date)->format('Y-m-d')}} 
-              </td>
+              <td class="px-2 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
+                {{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') }}
+            </td>
+            
               <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
                 <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
                 <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline">
@@ -70,7 +71,6 @@
               </td>
             </tr>
             @endforeach
-
           </tbody>
         </table>
       </div>

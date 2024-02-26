@@ -16,25 +16,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 
-
-Route::post('login',[SessionController::class,'store']);
-Route::post('/logout',[SessionController::class,'destroy'])->middleware('auth');
-
-
+Route::post('login', [SessionController::class, 'store']);
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
-  Route::controller(TaskController::class)->group(function () {
-    Route::get('/', 'index')->name('dashboard');
-    Route::get('/dashboard/show/{task}', 'show')->name('dashboard.show');
-    Route::get('/dashboard/edit/{task}', 'edit')->name('dashboard.edit');
-    Route::put('/dashboard/tasks/{task}', 'update')->name('tasks.update');
-    Route::delete('/dashboard/tasks/{task}', 'destroy')->name('tasks.destroy');
-    Route::post('/tasks', 'store')->name('tasks.store');
-});
+	Route::view('/create', 'tasks.create')->name('dashboard.create');
+	Route::view('/profile', 'tasks.profile')->name('dashboard.profile');
 
-  Route::view('/create', 'tasks.create')->name('dashboard.create');
-  Route::view('/profile', 'tasks.profile')->name('dashboard.profile');
+	Route::controller(TaskController::class)->group(function () {
+		Route::get('/', 'index')->name('dashboard');
+		Route::get('/show/{task}', 'show')->name('dashboard.show');
+		Route::get('/edit/{task}', 'edit')->name('dashboard.edit');
+
+		Route::prefix('tasks')->group(function () {
+			Route::put('/{task}', 'update')->name('tasks.update');
+			Route::delete('/{task}', 'destroy')->name('tasks.destroy');
+			Route::post('/', 'store')->name('tasks.store');
+		});
+	});
 });

@@ -29,5 +29,6 @@ class DatabaseSeeder extends Seeder
 
         Task::factory(5)->create([
             'user_id' => $user->id, // Pass the user ID to the task factory
-        ]);    }
+        ]);
+    }
 }
