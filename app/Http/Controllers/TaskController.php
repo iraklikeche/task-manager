@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
+use App\Http\Requests\UpdatePasswordRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -78,13 +79,8 @@ class TaskController extends Controller
 		return back()->with('success', 'All overdue tasks have been deleted.');
 	}
 
-	public function updatePassword(Request $request)
+	public function updatePassword(UpdatePasswordRequest $request)
 	{
-		$request->validate([
-			'curr-pass'             => 'required',
-			'new-pass'              => 'required|min:4|confirmed',
-			'new-pass_confirmation' => 'required|same:new-pass',
-		]);
 		$user = Auth::user();
 
 		if (!Hash::check($request->input('curr-pass'), $user->password)) {
