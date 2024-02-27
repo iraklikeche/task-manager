@@ -1,4 +1,3 @@
-{{-- @props(['name', 'type' => 'text', 'placeholder','value' => '']) --}}
 @props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => ''])
 
 @php

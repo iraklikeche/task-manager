@@ -83,11 +83,11 @@ class TaskController extends Controller
 	{
 		$user = Auth::user();
 
-		if (!Hash::check($request->input('curr-pass'), $user->password)) {
-			return back()->withErrors(['curr-pass' => 'The current password does not match our records.']);
+		if (!Hash::check($request->input('current_password'), $user->password)) {
+			return back()->withErrors(['current_password' => 'The current password does not match our records.']);
 		}
 
-		$user->password = Hash::make($request->input('new-pass'));
+		$user->password = Hash::make($request->input('new_password'));
 		$user->save();
 
 		return back()->with('success', 'Password successfully updated.');
