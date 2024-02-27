@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class TaskController extends Controller
 {
@@ -74,5 +76,24 @@ class TaskController extends Controller
 		$user->tasks()->where('due_date', '<', now())->delete();
 
 		return back()->with('success', 'All overdue tasks have been deleted.');
+	}
+
+	public function updatePassword(Request $request)
+	{
+		$request->validate([
+			'curr-pass'             => 'required',
+			'new-pass'              => 'required|min:4|confirmed',
+			'new-pass_confirmation' => 'required|same:new-pass',
+		]);
+		$user = Auth::user();
+
+		if (!Hash::check($request->input('curr-pass'), $user->password)) {
+			return back()->withErrors(['curr-pass' => 'The current password does not match our records.']);
+		}
+
+		$user->password = Hash::make($request->input('new-pass'));
+		$user->save();
+
+		return back()->with('success', 'Password successfully updated.');
 	}
 }

@@ -2,15 +2,15 @@
   <div class="mx-auto w-96 flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">Profile</h1>
     
-    <form class="flex flex-col gap-10">
+    <form class="flex flex-col gap-10" method="POST" action="{{ route('user.updatePassword') }}">
       @csrf
-      <x-form.input type="text" placeholder="Name@redberry.ge" name="email" value="{{ old('email') }}"  />
+      <x-form.input type="text" placeholder="Name@redberry.ge" name="email" value="{{ old('email') }}" value="{{ auth()->user()->email }}" />
 
       <div class="flex flex-col gap-4">
         <h2 class="uppercase text-[#2f363d] text-center">Change Password</h2>
         <x-form.input type="password" placeholder="Current Password" name="curr-pass"   value="" />
         <x-form.input type="password" placeholder="new Password" name="new-pass" value="" />
-        <x-form.input type="password" placeholder="Retype new Password" name="re-new-pass" value=""  />
+        <x-form.input type="password" placeholder="Retype new Password" name="new-pass_confirmation" value=""  />
       </div>
 
       <div class="flex flex-col gap-4 m-6">
@@ -22,7 +22,7 @@
           <a href="#" class="uppercase">Delete</a>
         </div>
         <div class="flex items-center gap-4">
-          <img src="{{ asset('images/defaults/bg.png') }}" class="w-24 h-24"/>
+          <img src="{{ asset('images/defaults/bg.png') }}" class="w-28 h-16"/>
 
           <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}"  />
           <a href="#" class="uppercase">Delete</a>
