@@ -4,9 +4,20 @@
     
     <form class="flex flex-col gap-10" method="POST" action="{{ route('user.updatePassword') }}" enctype="multipart/form-data">
       @csrf
-      <x-form.input type="text" placeholder="Name@redberry.ge" name="email" value="{{ auth()->user()->email }}" class="text-[#]" readonly="true" />
+      <div class="relative">
+        <input name="email" type="text" id="email" placeholder="email" 
+               value="{{ auth()->user()->email }}" 
+               class="peer bg-[#f6f8fa] rounded-xl w-full py-4 px-4 placeholder:text-[#959da5] focus:outline-none"
+               readonly />
+               
+        <label for="email" class="absolute left-2 cursor-text transition-all text-xs -top-4 text-gray-600">
+            Email
+        </label>
+    
+        <x-form.error name="email" />
+    </div>
 
-      <div class="flex flex-col gap-4">
+      <div class="flex flex-col gap-8">
         <h2 class="uppercase text-[#2f363d] text-center">Change Password</h2>
         <x-form.input type="password" placeholder="Current Password" name="current_password"   value="" />
         <x-form.input type="password" placeholder="new Password" name="new_password" value="" />
@@ -15,22 +26,22 @@
       <div class="flex flex-col gap-4 m-6">
         <h2 class="uppercase text-[#2f363d] text-center mb-6">Change Photos</h2>
         <div class="flex items-center gap-4">
-          <img src="{{ asset('images/defaults/avatar.png') }}" class="w-24"/>
+          <img src="{{ asset('images/defaults/avatar.png') }}" class="w-20"/>
 
-          <label class="inline-block text-blue-600 hover:text-blue-500 cursor-pointer border border-custom-blue py-2 px-4 rounded-xl uppercase text-xs">
-            <span class=" text-base leading-normal">Upload Profile</span>
-            <x-form.input type="file" name="profile-photo" placeholder="" value="{{ old('profilePhoto') }}" class="hidden" />
-          </label>
-          <a href="#" class="uppercase">Delete</a>
-        </div>
-        <div class="flex items-center gap-4">
-          <img src="{{ asset('images/defaults/bg.png') }}" class="w-28 h-16"/>
-
-          <label class="inline-block text-blue-600 hover:text-blue-500 cursor-pointer border border-custom-blue py-2 px-4 rounded-xl uppercase text-xs">
-            <span class="text-base leading-normal">Upload Profile</span>
+          <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
+            <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
             <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}" class="hidden" />
           </label>
-          <a href="#" class="uppercase">Delete</a>
+          {{-- <a href="#" class="uppercase">Delete</a> --}}
+        </div>
+        <div class="flex items-center gap-4">
+          <img src="{{ asset('images/defaults/bg.png') }}" class="w-20 h-20"/>
+
+          <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
+            <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
+            <x-form.input type="file" name="cover" placeholder="" value="{{ old('avatar') }}" class="hidden" />
+          </label>
+          {{-- <a href="#" class="uppercase">Delete</a> --}}
         </div>    
       </div>
       <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white">Change</button>
