@@ -35,10 +35,10 @@
           {{-- <a href="#" class="uppercase">Delete</a> --}}
         </div>
         <div class="flex items-center gap-4">
-          <img src="{{ auth()->user()->cover_image ? Storage::url(auth()->user()->cover_image) : asset('images/defaults/bg.png') }}" class="w-20" alt="Profile Image" />
+          <img id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20"/>  
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
-            <x-form.input type="file" name="cover" placeholder="" value="{{ old('avatar') }}" class="hidden" />
+            <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" class="hidden" />
           </label>
           {{-- I will uncomment when start working on delete feature --}}
           {{-- <a href="#" class="uppercase">Delete</a> --}}

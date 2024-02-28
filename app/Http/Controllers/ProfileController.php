@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProfileController extends Controller
 {
@@ -13,11 +14,6 @@ class ProfileController extends Controller
 		$user = Auth::user();
 		$attributes = $request->validated();
 
-		// if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
-		// 	return back()->withErrors(['current_password' => __('validation.confirmed')]);
-		// }
-
-		// $user->password = Hash::make($request->input('new_password'));
 		if (!empty($attributes['new_password'])) {
 			if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
 				return back()->withErrors(['current_password' => __('validation.confirmed')]);
@@ -31,13 +27,16 @@ class ProfileController extends Controller
 			$user->profile_image = $path;
 		}
 
-		if ($request->hasFile('cover')) {
-			$path = $request->file('cover')->store('covers', 'public');
-			$user->cover_image = $path;
+		if ($request->hasFile('cover_image')) {
+			$request->cover_image->storeAs('images', 'cover_image.png', 'public');
+
+			$request->cover_image->storeAs('images', 'cover_image.png', 'public');
+		} elseif ($request->input('delete') === 'true') {
+			Storage::delete('public/storage/covers/' . $user->id . '.png');
 		}
 
 		$user->save();
 
-		return back()->with('success', 'Password successfully updated.');
+		return back()->with('success', 'Profile successfully updated.');
 	}
 }
