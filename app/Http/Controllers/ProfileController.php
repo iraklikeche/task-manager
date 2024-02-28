@@ -29,8 +29,6 @@ class ProfileController extends Controller
 
 		if ($request->hasFile('cover_image')) {
 			$request->cover_image->storeAs('images', 'cover_image.png', 'public');
-
-			$request->cover_image->storeAs('images', 'cover_image.png', 'public');
 		} elseif ($request->input('delete') === 'true') {
 			Storage::delete('public/storage/covers/' . $user->id . '.png');
 		}
