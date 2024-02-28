@@ -2,7 +2,7 @@
   <div class="mx-auto w-96 flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">Profile</h1>
     
-    <form class="flex flex-col gap-10" method="POST" action="{{ route('user.update_password') }}" enctype="multipart/form-data" >
+    <form class="flex flex-col gap-10" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" >
       @csrf
       <div class="relative">
         <input name="email" type="text" id="email" placeholder="email"

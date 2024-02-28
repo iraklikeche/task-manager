@@ -8,15 +8,23 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-	public function updatePassword(UpdatePasswordRequest $request)
+	public function updateProfile(UpdatePasswordRequest $request)
 	{
 		$user = Auth::user();
 		$attributes = $request->validated();
-		if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
-			return back()->withErrors(['current_password' => __('validation.confirmed')]);
-		}
 
-		$user->password = Hash::make($request->input('new_password'));
+		// if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
+		// 	return back()->withErrors(['current_password' => __('validation.confirmed')]);
+		// }
+
+		// $user->password = Hash::make($request->input('new_password'));
+		if (!empty($attributes['new_password'])) {
+			if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
+				return back()->withErrors(['current_password' => __('validation.confirmed')]);
+			}
+
+			$user->password = Hash::make($attributes['new_password']);
+		}
 
 		if ($request->hasFile('avatar')) {
 			$path = $request->file('avatar')->store('profiles', 'public');

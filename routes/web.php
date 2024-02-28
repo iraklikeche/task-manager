@@ -22,14 +22,11 @@ Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
-// Processes the profile update form submission
-Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 	Route::view('/create', 'tasks.create')->name('dashboard.create');
 	Route::view('/profile', 'tasks.profile')->name('dashboard.profile');
-
-	Route::post('/user/password/update', [ProfileController::class, 'updatePassword'])->name('user.update_password');
 
 	Route::controller(TaskController::class)->group(function () {
 		Route::get('/', 'index')->name('dashboard');
