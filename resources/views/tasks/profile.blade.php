@@ -2,10 +2,10 @@
   <div class="mx-auto w-96 flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">Profile</h1>
     
-    <form class="flex flex-col gap-10" method="POST" action="{{ route('user.updatePassword') }}" enctype="multipart/form-data">
+    <form class="flex flex-col gap-10" method="POST" action="{{ route('user.update_password') }}" enctype="multipart/form-data" >
       @csrf
       <div class="relative">
-        <input name="email" type="text" id="email" placeholder="email" 
+        <input name="email" type="text" id="email" placeholder="email"
                value="{{ auth()->user()->email }}" 
                class="peer bg-[#f6f8fa] rounded-xl w-full py-4 px-4 placeholder:text-[#959da5] focus:outline-none"
                readonly />
@@ -26,7 +26,8 @@
       <div class="flex flex-col gap-4 m-6">
         <h2 class="uppercase text-[#2f363d] text-center mb-6">Change Photos</h2>
         <div class="flex items-center gap-4">
-          <img src="{{ asset('images/defaults/avatar.png') }}" class="w-20"/>
+          {{-- <img src="{{ asset('images/defaults/avatar.png') }}" class="w-20"/> --}}
+          <img src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
 
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
@@ -35,7 +36,9 @@
           {{-- <a href="#" class="uppercase">Delete</a> --}}
         </div>
         <div class="flex items-center gap-4">
-          <img src="{{ asset('images/defaults/bg.png') }}" class="w-20 h-20"/>
+          {{-- <img src="{{ asset('images/defaults/bg.png') }}" class="w-20 h-20"/> --}}
+          <img src="{{ auth()->user()->cover_image ? Storage::url(auth()->user()->cover_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
+
 
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>

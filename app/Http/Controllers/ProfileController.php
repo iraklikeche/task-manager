@@ -2,39 +2,39 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\UpdatePasswordRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-	// public function update(Request $request)
-	// {
-	// 	$user = Auth::user();
+	public function updatePassword(UpdatePasswordRequest $request)
+	{
+		// dd($request->validated());
 
-  //   $request->validate([
-  //       'avatar' => 'nullable|image|max:2048', // 2MB Max
-  //       'cover' => 'nullable|image|max:2048',
-  //   ]);
+		$user = Auth::user();
+		$attributes = $request->validated();
+		if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
+			return back()->withErrors(['current_password' => __('validation.confirmed')]);
+		}
 
-  //   if ($request->hasFile('avatar')) {
-  //       $path = $request->file('avatar')->store('profiles', 'public');
-  //       $user->profile_image = $path;
-  //   }
+		$user->password = Hash::make($request->input('new_password'));
+		$user->save();
 
-  //   if ($request->hasFile('cover')) {
-  //       $path = $request->file('cover')->store('covers', 'public');
-  //       $user->cover_image = $path;
-  //   }
+		$user = Auth::user();
 
-  //   $user->save();
+		if ($request->hasFile('avatar')) {
+			$path = $request->file('avatar')->store('profiles', 'public');
+			$user->profile_image = $path;
+		}
 
-  //   return back()->with('success', 'Profile updated successfully.');
-	// }
+		if ($request->hasFile('cover')) {
+			$path = $request->file('cover')->store('covers', 'public');
+			$user->cover_image = $path;
+		}
 
-	// public function showProfile()
-	// {
-	// 	$user = Auth::user();
-	// 	return view('profile', compact('user'));
-	// }
+		$user->save();
+
+		return back()->with('success', 'Password successfully updated.');
+	}
 }

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
@@ -21,16 +22,21 @@ Route::get('/', [HomeController::class, 'index'])->middleware('guest');
 Route::post('login', [SessionController::class, 'store']);
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
 
+// Processes the profile update form submission
+Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {
 	Route::view('/create', 'tasks.create')->name('dashboard.create');
 	Route::view('/profile', 'tasks.profile')->name('dashboard.profile');
+
+	Route::post('/user/password/update', [ProfileController::class, 'updatePassword'])->name('user.update_password');
 
 	Route::controller(TaskController::class)->group(function () {
 		Route::get('/', 'index')->name('dashboard');
 		Route::get('/show/{task}', 'show')->name('dashboard.show');
 		Route::get('/edit/{task}', 'edit')->name('dashboard.edit');
 		Route::delete('/overdue-tasks', 'deleteOverdueTasks')->name('tasks.deleteOverdue');
-		Route::post('/user/password/update', 'updatePassword')->name('user.updatePassword');
+		// Route::post('/user/password/update', 'updatePassword')->name('user.updatePassword');
 
 		Route::prefix('tasks')->group(function () {
 			Route::put('/{task}', 'update')->name('tasks.update');
