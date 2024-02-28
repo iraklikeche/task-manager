@@ -1,7 +1,8 @@
 <x-layout>
     <div class="flex items-center gap-48 h-screen py-10 px-12">
         <div class="inline-block h-full w-1/2">
-            <img src="{{ asset('images/defaults/bg.png') }}" class="inline-block h-full w-full"/>
+            <img id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20"/>  
+
         </div>
   
         <div class="grid grid-cols-1 grid-rows-3 h-full items-center">
