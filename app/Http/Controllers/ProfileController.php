@@ -10,7 +10,6 @@ class ProfileController extends Controller
 {
 	public function updatePassword(UpdatePasswordRequest $request)
 	{
-
 		$user = Auth::user();
 		$attributes = $request->validated();
 		if ($attributes['current_password'] && !Hash::check($attributes['current_password'], $user->password)) {
@@ -18,9 +17,6 @@ class ProfileController extends Controller
 		}
 
 		$user->password = Hash::make($request->input('new_password'));
-		$user->save();
-
-		$user = Auth::user();
 
 		if ($request->hasFile('avatar')) {
 			$path = $request->file('avatar')->store('profiles', 'public');
