@@ -10,7 +10,6 @@ class ProfileController extends Controller
 {
 	public function updatePassword(UpdatePasswordRequest $request)
 	{
-		// dd($request->validated());
 
 		$user = Auth::user();
 		$attributes = $request->validated();

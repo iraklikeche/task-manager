@@ -23,6 +23,8 @@
         
  --}}
 
+ {{-- If possible I will keep like this to style later --}}
+
      
  @props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => ''])
     

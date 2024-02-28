@@ -1,7 +1,7 @@
 <x-layout>
     <div class="flex items-center gap-48 h-screen py-10 px-12">
         <div class="inline-block h-full w-1/2">
-            <img src="{{ asset('images/defaults/bg.png') }}" class="inline-block h-full w-full"/>
+            <img src="{{ auth()->user()->cover_image ? Storage::url(auth()->user()->cover_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
         </div>
   
         <div class="grid grid-cols-1 grid-rows-3 h-full items-center">

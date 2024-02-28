@@ -17,7 +17,11 @@
 {{--     
         <x-form.error name="{{$name}}" />
     </div> --}}
-    
+
+
+
+     {{-- If possible I will keep like this to style later --}}
+
 
     @props(['name',  'placeholder','value' => ''])
     @php
@@ -30,7 +34,7 @@
                     focus:outline-none
                     {{ $errors->has($dotNotation) ? ' border border-red-500 focus:border-red-500 focus:ring-red-500' : 'focus:border-sky-500 focus:ring-1 focus:ring-sky-500' }}"
             >{{$slot ?? old($name)}}
-    </textarea>
+</textarea>
           
         
             <x-form.error name="{{$name}}" />

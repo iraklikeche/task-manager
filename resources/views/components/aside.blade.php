@@ -1,6 +1,5 @@
 <aside class="flex flex-col bg-[#f6f8fa] px-8 py-4 items-center gap-20 rounded-xl">
   <div>
-    {{-- <img src="{{ asset('images/defaults/avatar.png') }}"/> --}}
     <img src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
   </div>
   <div>

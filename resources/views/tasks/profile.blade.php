@@ -26,24 +26,21 @@
       <div class="flex flex-col gap-4 m-6">
         <h2 class="uppercase text-[#2f363d] text-center mb-6">Change Photos</h2>
         <div class="flex items-center gap-4">
-          {{-- <img src="{{ asset('images/defaults/avatar.png') }}" class="w-20"/> --}}
           <img src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
-
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
             <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}" class="hidden" />
           </label>
+          {{-- I will uncomment when start working on delete feature --}}
           {{-- <a href="#" class="uppercase">Delete</a> --}}
         </div>
         <div class="flex items-center gap-4">
-          {{-- <img src="{{ asset('images/defaults/bg.png') }}" class="w-20 h-20"/> --}}
           <img src="{{ auth()->user()->cover_image ? Storage::url(auth()->user()->cover_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
-
-
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
             <x-form.input type="file" name="cover" placeholder="" value="{{ old('avatar') }}" class="hidden" />
           </label>
+          {{-- I will uncomment when start working on delete feature --}}
           {{-- <a href="#" class="uppercase">Delete</a> --}}
         </div>    
       </div>
