@@ -13,11 +13,11 @@
                 </div>
                 <img src="{{ asset('images/defaults/smile.png') }}" alt=""/>
             </div>
-            <form method="POST" action="/login" class="flex flex-col gap-4">
+            <form method="POST" action="/login" class="flex flex-col gap-4" novalidate>
                 @csrf
                 
-                <x-form.input type="email" placeholder="Type your email" name="email" value="{{ old('email') }}"  />
-                    <x-form.input type="password" placeholder="Write your Password" name="password" />
+                <x-form.input type="email" placeholder="Type your email" name="email" value="{{ old('email') }}" required />
+                    <x-form.input type="password" placeholder="Write your Password" name="password" required />
                     <x-icons.show />                  
                 <div class="w-full">
                     <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-xl focus:outline-none focus:shadow-outline" type="submit">

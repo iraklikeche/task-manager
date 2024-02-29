@@ -2,7 +2,7 @@
   <div class="mx-auto w-96 flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">Profile</h1>
     
-    <form class="flex flex-col gap-10" method="POST" action="{{ route('profile.update') }}" enctype="multipart/form-data" >
+    <form class="flex flex-col gap-10" method="POST" action="{{ route('profile.update') }}" novalidate enctype="multipart/form-data" >
       @csrf
       <div class="relative">
         <input name="email" type="text" id="email" placeholder="email"
@@ -19,9 +19,9 @@
 
       <div class="flex flex-col gap-8">
         <h2 class="uppercase text-[#2f363d] text-center">Change Password</h2>
-        <x-form.input type="password" placeholder="Current Password" name="current_password"   value="" />
-        <x-form.input type="password" placeholder="new Password" name="new_password" value="" />
-        <x-form.input type="password" placeholder="Retype new Password" name="new_password_confirmation" value="" />
+        <x-form.input type="password" placeholder="Current Password" name="current_password" required/>
+        <x-form.input type="password" placeholder="new Password" name="new_password" value="" required/>
+        <x-form.input type="password" placeholder="Retype new Password" name="new_password_confirmation" value="" required/>
       </div>
       <div class="flex flex-col gap-4 m-6">
         <h2 class="uppercase text-[#2f363d] text-center mb-6">Change Photos</h2>
@@ -29,7 +29,7 @@
           <img id="img-avatar" src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
           <label class=" inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
-            <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}" class="hidden" onchange="changeImage(event,'img-avatar')" />
+            <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}"  onchange="changeImage(event,'img-avatar')" hidden />
           </label>
           <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-35%] hidden">Delete</button>
         </div>
@@ -37,7 +37,7 @@
           <img  id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20" />  
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
-            <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" class="hidden" onchange="changeImage(event,'img-cover_image')" />
+            <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" onchange="changeImage(event,'img-cover_image')" hidden />
           </label>
           <button onclick="removeImage('cover_image')" type="button" id="delete-img-cover_image" class="uppercase absolute right-[-35%] hidden">Delete</button>
         </div>
