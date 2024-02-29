@@ -1,7 +1,6 @@
 @props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => '', 'readonly' => false])
 @php
     $dotNotation = str_replace(['[', ']'], ['.', ''], $name);
-        // $placeholder = __('auth.email_placeholder');
 
 @endphp
 
@@ -14,11 +13,9 @@
                 $class
             ])
              {{ $readonly ? 'readonly' : '' }} 
-             {{-- placeholder="{{ __($placeholder) }}"  --}}
 
          />
         <label for="{{$name}}" class="absolute left-2 top-4 text-gray-600 cursor-text peer-focus:text-xs peer-focus:-top-4 peer-focus:text-gray-600  peer-valid:text-xs peer-valid:-top-4 peer-valid:text-gray-600   transition-all">
-                {{-- {{$placeholder}} --}}
                 {{ __($placeholder) }}
 
         </label>
