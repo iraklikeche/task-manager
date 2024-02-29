@@ -33,7 +33,7 @@
  @endphp
  
  <div>
-         <input name="{{ $name }}" type="{{ $type }}" id="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ $value }}"
+         <input {{$attributes()}} name="{{ $name }}" type="{{ $type }}" id="{{ $name }}" placeholder="{{ $placeholder }}" value="{{ $value }}"
          @class([
                  'bg-[#f6f8fa] rounded-xl w-full py-3 px-4 placeholder:text-[#959da5] focus:outline-none',
                  'border border-red-500 focus:border-red-500 focus:ring-red-500' => $errors->has($dotNotation),

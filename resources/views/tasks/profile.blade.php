@@ -25,26 +25,50 @@
       </div>
       <div class="flex flex-col gap-4 m-6">
         <h2 class="uppercase text-[#2f363d] text-center mb-6">Change Photos</h2>
-        <div class="flex items-center gap-4">
-          <img src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
-          <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
+        <div class="flex items-center gap-4 relative">
+          <img id="img-avatar" src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
+          <label class=" inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
-            <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}" class="hidden" />
+            <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}" class="hidden" onchange="changeImage(event,'img-avatar')" />
           </label>
-          {{-- I will uncomment when start working on delete feature --}}
-          {{-- <a href="#" class="uppercase">Delete</a> --}}
+          <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-35%] hidden">Delete</button>
         </div>
-        <div class="flex items-center gap-4">
-          <img id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20"/>  
+        <div class="flex items-center gap-4 relative">
+          <img  id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20" />  
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload /> Upload Profile</span>
-            <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" class="hidden" />
+            <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" class="hidden" onchange="changeImage(event,'img-cover_image')" />
           </label>
-          {{-- I will uncomment when start working on delete feature --}}
-          {{-- <a href="#" class="uppercase">Delete</a> --}}
-        </div>    
+          <button onclick="removeImage('cover_image')" type="button" id="delete-img-cover_image" class="uppercase absolute right-[-35%] hidden">Delete</button>
+        </div>
       </div>
       <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white">Change</button>
     </form>
   </div>
 </x-panel-layout>
+
+
+<script>
+  function changeImage(event,name){
+    console.log(event.target.files);
+    if(event.target.files && event.target.files[0]){
+      const reader = new FileReader();
+      reader.onload = function(e){
+        document.getElementById(name).src = e.target.result
+        document.getElementById(`delete-${name}`).style.display = 'block';
+
+      }
+      reader.readAsDataURL(event.target.files[0]);
+    }
+  }
+
+  function removeImage(name){
+   if(name === 'avatar'){
+       document.getElementById(`img-${name}`).src = "{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}"
+   }else if(name === "cover_image"){
+       document.getElementById(`img-${name}`).src = "{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}"
+   }
+       const fileInput = document.getElementById(name).value = "";
+       document.getElementById(`delete-img-${name}`).style.display = 'none';
+  }
+</script>
