@@ -13,14 +13,14 @@ class CreateUser extends Command
 	 *
 	 * @var string
 	 */
-	protected $signature = 'app:create-user';
+	protected $signature = 'task-manager:create-user';
 
 	/**
 	 * The console command description.
 	 *
 	 * @var string
 	 */
-	protected $description = 'Command description';
+	protected $description = 'Creates user from the terminal';
 
 	/**
 	 * Execute the console command.

@@ -49,26 +49,33 @@
 
 
 <script>
-  function changeImage(event,name){
-    console.log(event.target.files);
-    if(event.target.files && event.target.files[0]){
-      const reader = new FileReader();
-      reader.onload = function(e){
-        document.getElementById(name).src = e.target.result
-        document.getElementById(`delete-${name}`).style.display = 'block';
+  function changeImage(event, name) {
+  if (event.target.files && event.target.files[0]) {
+    const file = event.target.files[0];
+    const imageUrl = URL.createObjectURL(file);
 
-      }
-      reader.readAsDataURL(event.target.files[0]);
-    }
-  }
+    document.getElementById(name).src = imageUrl;
+    document.getElementById(`delete-${name}`).style.display = 'block';
 
-  function removeImage(name){
-   if(name === 'avatar'){
-       document.getElementById(`img-${name}`).src = "{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}"
-   }else if(name === "cover_image"){
-       document.getElementById(`img-${name}`).src = "{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}"
-   }
-       const fileInput = document.getElementById(name).value = "";
-       document.getElementById(`delete-img-${name}`).style.display = 'none';
+
+    document.getElementById(name).onload = function() {
+      URL.revokeObjectURL(imageUrl);
+    };
   }
+}
+
+
+  function removeImage(name) {
+  if (name === 'avatar') {
+    document.getElementById(`img-${name}`).src = "{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}";
+  }
+  
+  if (name === "cover_image") {
+    document.getElementById(`img-${name}`).src = "{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}";
+  }
+  
+  const fileInput = document.getElementById(name).value = "";
+  document.getElementById(`delete-img-${name}`).style.display = 'none';
+}
+
 </script>
