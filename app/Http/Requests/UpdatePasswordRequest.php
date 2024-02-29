@@ -21,8 +21,8 @@ class UpdatePasswordRequest extends FormRequest
 			'current_password'             => 'required_with:new_password|nullable',
 			'new_password'                 => 'required_with:current_password|min:4|confirmed|nullable',
 			'new_password_confirmation'    => 'same:new_password',
-			'avatar'                       => '',
-			'cover'                        => '',
+			'avatar'                       => 'image',
+			'cover'                        => 'image',
 		];
 	}
 }

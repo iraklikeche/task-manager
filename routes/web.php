@@ -1,8 +1,9 @@
 <?php
 
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SessionController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,11 +18,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/localization/{locale}', LocalizationController::class)->name('localization');
+
 Route::get('/', [HomeController::class, 'index'])->middleware('guest');
-
-Route::post('login', [SessionController::class, 'store']);
-Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth');
-
+Route::post('login', [SessionController::class, 'store'])->name('login');
+Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
 Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
 
 Route::middleware(['auth'])->prefix('dashboard')->group(function () {

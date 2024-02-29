@@ -1,4 +1,4 @@
-<div class="mt-auto flex justify-end gap-4">
-  <button class=" text-xs">English</button>
-  <button class="text-[#6a737d] text-xs">ქართული</button>
+<div class="mt-auto flex justify-center gap-4">
+  <a href="{{ route('localization', 'en') }}" class=" text-xs">English</a>
+  <a href="{{ route('localization', 'ka')}}" class="text-[#6a737d] text-xs">ქართული</a>
 </div>

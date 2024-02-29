@@ -15,7 +15,7 @@
       </a>
     </ul>
   </div>
-  <form method="POST" action="/logout" class="text-xs font-semibold text-[#2f363d] mt-auto flex">
+  <form method="POST" action="{{route('logout')}}" class="text-xs font-semibold text-[#2f363d] mt-auto flex" novalidate>
     @csrf
     <x-icons.logout />
     <button >Log Out</button>
