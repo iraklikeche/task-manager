@@ -2,8 +2,6 @@
   <div class="flex justify-between items-center mb-6">
     <h1 class="uppercase text-3xl font-semibold pl-2">{{$task->name}}</h1>
     <div class="flex gap-4">
-      {{-- <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a> --}}
-
       <a href="{{ route('dashboard.edit',$task->id) }}" class="flex gap-4 items-center py-2 px-6 uppercase border border-[#499af9]
        rounded-xl text-xs font-bold text-[#499af9]
        "
