@@ -9,23 +9,26 @@
        <x-icons.edit />
        <span>
 
-         Edit task
+        {{__('tasks.edit_task')}}  
+
         </span> 
       </a>
     </div>
   </div>
   <div class=pl-2>
-    <h2 class="text-[#6a737d] text-sm font-semibold mb-4">Descrption</h2>
+    <h2 class="text-[#6a737d] text-sm font-semibold mb-4">
+      {{__('tasks.task_description')}}
+    </h2>
     <p>
       {{$task->description}}
     </p>
     <div class="flex gap-32 mt-16">
       <div class="flex flex-col gap-2">
-        <span class="text-[#6a737d] ">Created date</span>
+        <span class="text-[#6a737d] ">{{__('tasks.created_at')}}</span>
         <span>{{$task->created_at}}</span>
       </div>
       <div class="flex flex-col gap-2">
-        <span class="text-[#6a737d] ">Due date</span>
+        <span class="text-[#6a737d] ">{{__('tasks.due_date')}}</span>
         <span>{{\Carbon\Carbon::parse($task->due_date)->format('Y-m-d')}}</span>
       </div>
     </div>

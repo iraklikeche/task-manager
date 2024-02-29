@@ -1,7 +1,6 @@
 @props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => '', 'readonly' => false])
 @php
     $dotNotation = str_replace(['[', ']'], ['.', ''], $name);
-
 @endphp
 
 <div class="relative">
