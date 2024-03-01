@@ -12,4 +12,5 @@
 
 <body style="font-family: Open Sans, sans-serif">
    {{$slot}}
+   <x-flash />
 </body>

@@ -25,11 +25,11 @@
   />
 
 
-  <x-form.textarea placeholder="tasks.task_description_en" name="description[en]" required>
+  <x-form.textarea placeholder="tasks.description_en" name="description[en]" required>
     {{ $task->description ?? ""}} 
   </x-form.textarea>
 
-  <x-form.textarea placeholder="tasks.task_description_ge" name="description[ge]" required>
+  <x-form.textarea placeholder="tasks.description_ge" name="description[ge]" required>
     {{ $task->description ?? ""}}
   </x-form.textarea>
   <x-form.input type="date" name="due_date" value="{{ old('due_date', isset($task->due_date) ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : '') }}" placeholder=""/>

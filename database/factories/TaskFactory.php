@@ -18,8 +18,14 @@ class TaskFactory extends Factory
 	public function definition(): array
 	{
 		return [
-			'name'        => $this->faker->sentence(),
-			'description' => $this->faker->paragraph(),
+			'name' => [
+				'en' => $this->faker->sentence(),
+				'ge' => $this->faker->sentence(),
+			],
+			'description' => [
+				'en' => $this->faker->paragraph(),
+				'ge' => $this->faker->paragraph(),
+			],
 			'due_date'    => Carbon::now()->addDays(rand(1, 30)),
 		];
 	}
