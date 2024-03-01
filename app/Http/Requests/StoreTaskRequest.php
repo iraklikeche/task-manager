@@ -25,4 +25,25 @@ class StoreTaskRequest extends FormRequest
 			'due_date'       => 'required|date',
 		];
 	}
+
+	public function messages(): array
+	{
+		// {{ __('auth.welcome_back') }}
+		return [
+			'name.en.required'        => __('errors.name_en_required'),
+			'name.en.min'             => __('errors.name_en_min'),
+			'name.en.regex'           => __('errors.name_en_regex'),
+			'name.ka.required'        => __('errors.name_ka_required'),
+			'name.ka.min'             => __('errors.name_ka_min'),
+			'name.ka.regex'           => __('errors.name_ka_regex'),
+			'description.en.required' => __('errors.description_en_required'),
+			'description.en.min'      => __('errors.description_en_min'),
+			'description.en.regex'    => __('errors.description_en_regex'),
+			'description.ka.required' => __('errors.description_ka_required'),
+			'description.ka.min'      => __('errors.description_ka_min'),
+			'description.ka.regex'    => __('errors.description_ka_regex'),
+			'due_date.required'       => __('errors.due_date_required'),
+			'due_date.date'           => __('errors.due_date_date'),
+		];
+	}
 }
