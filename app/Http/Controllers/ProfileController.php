@@ -11,6 +11,10 @@ class ProfileController extends Controller
 {
 	public function updateProfile(UpdatePasswordRequest $request)
 	{
+		if (empty($attributes['new_password']) && empty($request->hasFile('avatar')) && empty($request->hasFile('cover_image'))) {
+			return back()->with('danger', 'Please make changes');
+		}
+
 		$user = Auth::user();
 		$attributes = $request->validated();
 
