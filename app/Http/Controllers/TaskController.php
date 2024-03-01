@@ -54,7 +54,6 @@ class TaskController extends Controller
 	public function store(StoreTaskRequest $request)
 	{
 		$validated = $request->validated();
-
 		$task = Task::create([
 			'user_id'     => auth()->id(),
 			'name'        => [
@@ -74,7 +73,7 @@ class TaskController extends Controller
 	public function destroy(Task $task)
 	{
 		$task->delete();
-		return redirect()->route('dashboard')->with('success', 'Task deleted successfully.');
+		return redirect()->route('dashboard')->with('delete', 'Task deleted successfully.');
 	}
 
 	public function deleteOverdueTasks()
@@ -82,6 +81,6 @@ class TaskController extends Controller
 		$user = auth()->user();
 		$user->tasks()->where('due_date', '<', now())->delete();
 
-		return back()->with('success', 'All overdue tasks have been deleted.');
+		return back()->with('delete', 'All overdue tasks have been deleted.');
 	}
 }
