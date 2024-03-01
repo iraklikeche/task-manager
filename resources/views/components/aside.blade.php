@@ -5,19 +5,19 @@
   <div>
     <ul class="text-[#2f363d] flex flex-col gap-6">
       <a href="{{route('dashboard')}}">
-        <li class="flex gap-2 items-center"><x-icons.tasks /><span class="whitespace-nowrap"> My tasks</span></li>
+        <li class="flex gap-2 items-center"><x-icons.tasks /><span class="whitespace-nowrap">{{__('tasks.my_tasks')}}</span></li>
       </a>
       <a href="{{ route('dashboard', ['due' => 'true']) }}">
-        <li class="flex gap-2 items-center"><x-icons.dueTasks /><span> Due</span></li>
+        <li class="flex gap-2 items-center"><x-icons.dueTasks /><span class="whitespace-nowrap">{{__('tasks.due_tasks')}}</span></li>
       </a>
       <a href="{{ route('dashboard.profile') }}" >
-        <li class="flex gap-2 items-center"><x-icons.profile /> <span>Profile</span></li>
+        <li class="flex gap-2 items-center"><x-icons.profile /> <span>{{__('tasks.profile')}}</span></li>
       </a>
     </ul>
   </div>
   <form method="POST" action="{{route('logout')}}" class="text-xs font-semibold text-[#2f363d] mt-auto flex" novalidate>
     @csrf
     <x-icons.logout />
-    <button >Log Out</button>
+    <button type="submit">{{__('tasks.logout')}}</button>
   </form>
 </aside>

@@ -1,14 +1,13 @@
 <x-panel-layout>
   <div class="flex justify-between items-center mb-6">
-    <h1 class="uppercase text-3xl font-semibold pl-2">Your tasks</h1>
+    <h1 class="uppercase text-3xl font-semibold pl-2">{{__('tasks.task_heading')}}</h1>
     <div class="flex gap-4">
       <form action="{{ route('tasks.deleteOverdue') }}" method="POST">
         @csrf
         @method('DELETE')
         <button type="submit" class="text-custom-blue py-3 px-6 uppercase border border-custom-blue
         rounded-xl text-xs font-bold hover:bg-custom-blue hover:text-white transition-colors tracking-wide">
-        delete old tasks
-        </button>
+        {{__('tasks.delete_old_tasks')}}        </button>
     </form>
     
 
@@ -19,7 +18,7 @@
        <x-icons.add />
        <span>
 
-         Add task
+        {{__('tasks.add_task')}}
         </span>
       </a>
     </div>
@@ -31,25 +30,25 @@
             <thead>
               <tr class="text-left text-xs text-black font-semibold uppercase tracking-wider">
                 <th scope="col" class=" px-2 py-3">
-                  Task name
+                  {{__('tasks.task_name')}}
                 </th>
                 <th scope="col" class="px-2 py-3">
-                  Description
+                  {{__('tasks.task_description')}}
                 </th>
                 <th scope="col" class="px-2 py-3 relative">
-                  <span >Created at</span>
+                  <span>{{__('tasks.created_at')}}</span>
                   <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'created_at', 'order' => request('sort') === 'created_at' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
                     <x-icons.sort />
                   </a>
                 </th>
                 <th scope="col" class="px-2 py-3 relative">
-                  <span >Due Date</span>
+                  <span>{{__('tasks.due_date')}}</span>
                   <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'due_date', 'order' => request('sort') === 'due_date' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
                     <x-icons.sort />
                   </a>
                 </th>
                 <th scope="col" class="px-2 py-3">
-                  Actions
+                  {{__('tasks.actions')}}
                 </th>
               </tr>
             </thead>
@@ -71,13 +70,13 @@
               </td>
               
                 <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
-                  <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">Edit</a>
+                  <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">{{__('tasks.edit')}}</a>
                   <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class=" hover:text-black underline ml-4">Delete</button>
+                    <button type="submit" class=" hover:text-black underline ml-4">{{__('tasks.delete')}}</button>
                 </form>
-                  <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">Show</a>
+                  <a href="{{ route('dashboard.show',$task->id)  }}" class=" hover:text-black underline ml-4">{{__('tasks.show')}}</a>
                 </td>
               </tr>
 
