@@ -21,7 +21,7 @@
   <x-form.input required type="text" placeholder="tasks.task_name_en" name="name[en]" value="{{ old('name.en', $task->name ?? '') }}"
   /> 
 
-  <x-form.input required type="text" placeholder="tasks.task_name_ge" name="name[ge]" value="{{ old('name.ge', $task->name ?? '') }}"
+  <x-form.input required type="text" placeholder="tasks.task_name_ka" name="name[ka]" value="{{ old('name.ka', $task->name ?? '') }}"
   />
 
 
@@ -29,7 +29,7 @@
     {{ $task->description ?? ""}} 
   </x-form.textarea>
 
-  <x-form.textarea placeholder="tasks.description_ge" name="description[ge]" required>
+  <x-form.textarea placeholder="tasks.description_ka" name="description[ka]" required>
     {{ $task->description ?? ""}}
   </x-form.textarea>
   <x-form.input type="date" name="due_date" value="{{ old('due_date', isset($task->due_date) ? \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') : '') }}" placeholder=""/>
