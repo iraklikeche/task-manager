@@ -32,7 +32,7 @@ return [
 	],
 	'boolean'           => 'The :attribute field must be true or false.',
 	'can'               => 'The :attribute field contains an unauthorized value.',
-	'confirmed'         => 'The :attribute field confirmation does not match.',
+	'confirmed'         => 'The current password confirmation does not match.',
 	'current_password'  => 'The password is incorrect.',
 	'date'              => 'The :attribute field must be a valid date.',
 	'date_equals'       => 'The :attribute field must be a date equal to :date.',
@@ -185,5 +185,11 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'name.en'          => 'name',
+		'name.ka'          => 'name',
+		'description.en'   => 'description',
+		'description.ka'   => 'description',
+		'due_date'         => 'due date',
+	],
 ];

@@ -32,7 +32,7 @@ return [
 	],
 	'boolean'           => 'The :attribute field must be true or false.',
 	'can'               => 'The :attribute field contains an unauthorized value.',
-	'confirmed'         => 'პაროლები არ ემთხვევა',
+	'confirmed'         => 'ძველი პაროლი არ ემთხვევა',
 	'current_password'  => 'The password is incorrect.',
 	'date'              => 'The :attribute field must be a valid date.',
 	'date_equals'       => 'The :attribute field must be a date equal to :date.',
@@ -185,5 +185,11 @@ return [
 	|
 	*/
 
-	'attributes' => [],
+	'attributes' => [
+		'name.en'        => 'სახელი',
+		'name.ka'        => 'სახელი',
+		'description.en' => 'აღწერა',
+		'description.ka' => 'აღწერა',
+		'due_date'       => 'ბოლო ვადა',
+	],
 ];
