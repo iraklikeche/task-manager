@@ -32,7 +32,7 @@ return [
 	],
 	'boolean'           => 'The :attribute field must be true or false.',
 	'can'               => 'The :attribute field contains an unauthorized value.',
-	'confirmed'         => 'The current password confirmation does not match.',
+	'confirmed'         => 'ძველი პაროლი არ ემთხვევა',
 	'current_password'  => 'The password is incorrect.',
 	'date'              => 'The :attribute field must be a valid date.',
 	'date_equals'       => 'The :attribute field must be a date equal to :date.',
@@ -140,7 +140,7 @@ return [
 	'required_with_all'    => 'The :attribute field is required when :values are present.',
 	'required_without'     => 'The :attribute field is required when :values is not present.',
 	'required_without_all' => 'The :attribute field is required when none of :values are present.',
-	'same'                 => 'The :attribute field must match :other.',
+	'same'                 => 'პაროლები არ ემთხვევა',
 	'size'                 => [
 		'array'   => 'The :attribute field must contain :size items.',
 		'file'    => 'The :attribute field must be :size kilobytes.',
@@ -186,10 +186,10 @@ return [
 	*/
 
 	'attributes' => [
-		'name.en'          => 'name',
-		'name.ka'          => 'name',
-		'description.en'   => 'description',
-		'description.ka'   => 'description',
-		'due_date'         => 'due date',
+		'name.en'        => 'სახელი',
+		'name.ka'        => 'სახელი',
+		'description.en' => 'აღწერა',
+		'description.ka' => 'აღწერა',
+		'due_date'       => 'ბოლო ვადა',
 	],
 ];
