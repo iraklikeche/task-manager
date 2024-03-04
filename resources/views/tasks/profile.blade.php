@@ -34,7 +34,7 @@
           <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-35%] hidden">{{__('tasks.delete')}}</button>
         </div>
         <div class="flex items-center gap-4 relative">
-          <img  id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}" class="w-20" />  
+          <img  id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('/images/cover.png')}}" class="w-20" />  
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload />{{__('profile.upload_cover')}}</span>
             <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" onchange="changeImage(event,'img-cover_image')" hidden />
@@ -71,7 +71,7 @@
   }
   
   if (name === "cover_image") {
-    document.getElementById(`img-${name}`).src = "{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('storage/images/cover.png')}}";
+    document.getElementById(`img-${name}`).src = "{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('/images/cover.png')}}";
   }
   
   const fileInput = document.getElementById(name).value = "";
