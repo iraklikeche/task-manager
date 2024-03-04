@@ -29,8 +29,8 @@ return [
 	'delete'                                                                => 'Delete',
 	'create_task'                                                           => 'create task',
 	'task_name_en'                                                          => 'Task name in English',
-	'task_name_ge'                                                          => 'Task name in Georgian',
+	'task_name_ka'                                                          => 'Task name in Georgian',
 	'description_en'                                                        => 'Description in English',
-	'description_ge'                                                        => 'Description in Georgian',
+	'description_ka'                                                        => 'Description in Georgian',
 	'edit_task'                                                             => 'Edit Task',
 ];
