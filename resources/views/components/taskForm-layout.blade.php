@@ -21,7 +21,6 @@
   <x-form.input required type="text" placeholder="tasks.task_name_en" name="name[en]" value="{{ old('name.en', $task?->getTranslation('name','en')) }}"
   />  
   
-{{-- {{dd($task)}} --}}
   <x-form.input required type="text" placeholder="tasks.task_name_en" name="name[ka]" value="{{ old('name.ka', $task?->getTranslation('name','ka')) }}"
   />
 
