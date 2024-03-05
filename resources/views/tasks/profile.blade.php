@@ -34,8 +34,13 @@
           <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-35%] hidden">{{__('tasks.delete')}}</button>
         </div>
         <div class="flex items-center gap-4 relative">
-          {{-- <img  id="img-cover_image" src="{{file_exists(public_path('storage/images/cover_image.png')) ? asset('storage/images/cover_image.png') : asset('/images/cover.png')}}" class="w-20" />   --}}
-          <img id="img-cover_image" src="{{ asset('storage/images/cover_image.png') }}?{{ now()->timestamp }}" class="w-20" />
+  
+          <img id="img-cover_image" 
+            src="{{ file_exists(public_path('storage/images/cover_image.png')) 
+            ? asset('storage/images/cover_image.png') . '?' . now()->timestamp 
+            : asset('images/cover.png') }}" 
+            class="w-20" />
+
 
           <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload />{{__('profile.upload_cover')}}</span>
@@ -56,11 +61,6 @@
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
 
-    // const cacheBustedImageUrl = `${imageUrl}?timestamp=${new Date().getTime()}`;
-    // document.getElementById(name).src = cacheBustedImageUrl;
-
-
-
     document.getElementById(name).src = imageUrl;
     document.getElementById(`delete-${name}`).style.display = 'block';
 
@@ -70,7 +70,6 @@
     };
   }
 }
-
 
   function removeImage(name) {
   if (name === 'avatar') {
@@ -83,9 +82,6 @@
   
   const fileInput = document.getElementById(name).value = "";
   document.getElementById(`delete-img-${name}`).style.display = 'none';
-
-  // document.getElementById(`img-${name}`).src = `${defaultSrc}?timestamp=${new Date().getTime()}`;
-  // document.getElementById(`delete-img-${name}`).style.display = 'none';
 }
 
 </script>
