@@ -56,6 +56,11 @@
     const file = event.target.files[0];
     const imageUrl = URL.createObjectURL(file);
 
+    // const cacheBustedImageUrl = `${imageUrl}?timestamp=${new Date().getTime()}`;
+    // document.getElementById(name).src = cacheBustedImageUrl;
+
+
+
     document.getElementById(name).src = imageUrl;
     document.getElementById(`delete-${name}`).style.display = 'block';
 
@@ -78,6 +83,9 @@
   
   const fileInput = document.getElementById(name).value = "";
   document.getElementById(`delete-img-${name}`).style.display = 'none';
+
+  // document.getElementById(`img-${name}`).src = `${defaultSrc}?timestamp=${new Date().getTime()}`;
+  // document.getElementById(`delete-img-${name}`).style.display = 'none';
 }
 
 </script>
