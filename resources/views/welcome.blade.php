@@ -5,8 +5,7 @@
             src="{{ file_exists(public_path('storage/images/cover_image.png')) 
             ? asset('storage/images/cover_image.png') . '?' . now()->timestamp 
             : asset('images/cover.png') }}" 
-            class="w-20" />
-
+            class="inline-block h-full w-full" />
         </div>
   
         <div class="grid grid-cols-1 grid-rows-3 h-full items-center">
