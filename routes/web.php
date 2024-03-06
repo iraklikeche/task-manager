@@ -20,7 +20,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/localization/{locale}', LocalizationController::class)->name('localization');
 
-Route::get('/', [HomeController::class, 'index'])->middleware('guest');
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
+
+Route::view('/', 'welcome')->name('home')->middleware('guest');
+
 Route::post('login', [SessionController::class, 'store'])->name('login');
 Route::post('/logout', [SessionController::class, 'destroy'])->middleware('auth')->name('logout');
 Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.update')->middleware('auth');
