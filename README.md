@@ -33,33 +33,23 @@ Before you begin, ensure you meet the following requirements:
 
 1. First of all you need to clone Task Manager repository from github:
 
-```
- git clone git@github.com:RedberryInternship/task-manager-irakli-ketchekmadze.git
-```
+-   git clone git@github.com:RedberryInternship/task-manager-irakli-ketchekmadze.git
 
 2. Next step requires you to run composer install in order to install all the dependencies.
 
-```
-   composer install
-```
+-   composer install
 
 3. after you have installed all the PHP dependencies, it's time to install all the JS dependencies:
 
-```
-   npm install
-```
+-   npm install
 
 and also:
 
-```
-npm run dev
-```
+-   npm run dev
 
 4. Now we need to set our env file. Go to the root of your project and execute this command.
 
-```
- cp .env.example .env
-```
+-   cp .env.example .env
 
 And now you should provide .env file all the necessary environment variables:
 
@@ -79,9 +69,7 @@ DB_PASSWORD=**\***
 
 after setting up .env file, execute:
 
-```
 php artisan config:cache
-```
 
 in order to cache environment variables.
 
@@ -89,27 +77,19 @@ in order to cache environment variables.
 
 if you've completed getting started section, then migrating database if fairly simple process, just execute:
 
-```
 php artisan migrate
-```
 
 ## Development
 
 You can run Laravel's built-in development server by executing:
 
-```
 php artisan serve
-```
 
 when working on JS you may run:
-
-```
 npm run dev
-```
 
 ## Project Structure
 
-```
 ├─── app
 │ ├─── Console
 │ ├─── Exceptions
@@ -125,7 +105,6 @@ npm run dev
 ├─── routes
 ├─── storage
 ├─── tests
-```
 
 -   .env
 -   .env.example
