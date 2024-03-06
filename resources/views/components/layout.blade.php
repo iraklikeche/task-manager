@@ -4,13 +4,20 @@
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 @vite('resources/css/app.css')
 @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+
 <style>
- .bg {
-    background-image: url('{{ asset('images/defaults/bg.png') }}');
-  }
+@font-face {
+   font-family: 'Helvetica';
+   src: url({{ asset('fonts/Helvetica.ttf') }});
+}
+
+* {
+   font-family: 'Helvetica';
+}
 </style>
 
-<body style="font-family: Open Sans, sans-serif">
+<body>
    {{$slot}}
    <x-flash />
 </body>
