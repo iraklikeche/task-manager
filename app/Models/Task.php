@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Translatable\HasTranslations;
@@ -14,12 +15,12 @@ class Task extends Model
 
 	public $translatable = ['name', 'description'];
 
-	public function scopeOverdue($query)
+	public function scopeOverdue($query): Builder
 	{
 		return $query->where('due_date', '<', now());
 	}
 
-	public function scopeSortByField($query, $sortField = 'created_at', $sortOrder = 'desc')
+	public function scopeSortByField($query, $sortField = 'created_at', $sortOrder = 'desc'): Builder
 	{
 		$validFields = ['created_at', 'due_date'];
 
