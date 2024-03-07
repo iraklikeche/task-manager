@@ -8,29 +8,23 @@ use Illuminate\Support\Facades\Auth;
 
 class SessionController extends Controller
 {
-    public function create()
-    {
-        return view('welcome');
-    }
+	public function store(StoreUserRequest $request)
+	{
+		$credentials = $request->validated();
 
-    public function store(StoreUserRequest $request)
-    {
-        $credentials = $request->validated();
+		if (Auth::attempt($credentials)) {
+			return redirect()->route('dashboard');
+		}
 
-        if(Auth::attempt($credentials)) {
+		return back()->withInput()
+		->withErrors([
+			'email' => 'The provided credentials do not match our records ',
+		]);
+	}
 
-            return redirect('/dashboard');
-        }
-
-        return back()->withInput()
-        ->withErrors([
-            'email' => 'The provided credentials do not match our records ',
-        ]);
-    }
-
-    public function destroy(Request $request)
-    {
-        Auth::logout();
-        return redirect('/');
-    }
+	public function destroy(Request $request)
+	{
+		Auth::logout();
+		return redirect()->route('home');
+	}
 }
