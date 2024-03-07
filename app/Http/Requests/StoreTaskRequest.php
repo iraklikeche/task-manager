@@ -15,14 +15,25 @@ class StoreTaskRequest extends FormRequest
 	 *
 	 * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
 	 */
+	protected function commonRules($type = 'en'): array
+	{
+		$regex = $type === 'ka' ? '/^[ა-ჰ\s]+$/u' : '/^[A-Za-z\s]+$/';
+
+		return [
+			'required',
+			'min:3',
+			"regex:$regex",
+		];
+	}
+
 	public function rules(): array
 	{
 		return [
-			'name.en'        => 'required|min:3|regex:/^[A-Za-z\s]+$/',
-			'name.ka'        => 'required|min:3|regex:/^[ა-ჰ\s]+$/u',
-			'description.en' => 'required|min:3|regex:/^[A-Za-z\s]+$/',
-			'description.ka' => 'required|min:3|regex:/^[ა-ჰ\s]+$/u',
-			'due_date'       => 'required|date',
+			'name.en'        => $this->commonRules('en'),
+			'name.ka'        => $this->commonRules('ka'),
+			'description.en' => $this->commonRules('en'),
+			'description.ka' => $this->commonRules('ka'),
+			'due_date'       => ['required', 'date'],
 		];
 	}
 }

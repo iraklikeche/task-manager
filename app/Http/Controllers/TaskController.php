@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreTaskRequest;
 use App\Models\Task;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-	public function index(Request $request)
+	public function index(Request $request): View
 	{
 		$sortColumn = $request->query('sort', 'created_at');
 		$sortOrder = $request->query('order', 'desc') === 'asc' ? 'asc' : 'desc';
@@ -21,17 +23,17 @@ class TaskController extends Controller
 		return view('tasks.index', compact('tasks', 'sortColumn', 'sortOrder'));
 	}
 
-	public function show(Task $task)
+	public function show(Task $task): View
 	{
 		return view('tasks.show', compact('task'));
 	}
 
-	public function edit(Task $task)
+	public function edit(Task $task): View
 	{
 		return view('tasks.edit', compact('task'));
 	}
 
-	public function update(StoreTaskRequest $request, Task $task)
+	public function update(StoreTaskRequest $request, Task $task): RedirectResponse
 	{
 		$validated = $request->validated();
 
@@ -51,7 +53,7 @@ class TaskController extends Controller
 		return redirect()->route('dashboard')->with('success', 'Task updated successfully!');
 	}
 
-	public function store(StoreTaskRequest $request)
+	public function store(StoreTaskRequest $request): RedirectResponse
 	{
 		$validated = $request->validated();
 		$task = Task::create([
@@ -70,13 +72,13 @@ class TaskController extends Controller
 		return redirect()->route('dashboard')->with('success', 'Task created successfully!');
 	}
 
-	public function destroy(Task $task)
+	public function destroy(Task $task): RedirectResponse
 	{
 		$task->delete();
 		return redirect()->route('dashboard')->with('delete', 'Task deleted successfully.');
 	}
 
-	public function deleteOverdueTasks()
+	public function deleteOverdueTasks(): RedirectResponse
 	{
 		$user = auth()->user();
 		$user->tasks()->where('due_date', '<', now())->delete();
