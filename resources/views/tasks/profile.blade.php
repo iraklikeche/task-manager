@@ -1,5 +1,5 @@
 <x-panel-layout class="pr-64">
-  <div class="mx-auto w-96 flex flex-col gap-10">
+  <div class="mx-auto w-[28rem] flex flex-col gap-10">
     <h1 class="uppercase font-semibold text-3xl text-center">{{__('profile.profile')}}</h1>
     
     <form class="flex flex-col gap-10" method="POST" action="{{ route('profile.update') }}" novalidate enctype="multipart/form-data" >
