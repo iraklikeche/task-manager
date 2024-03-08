@@ -25,29 +25,30 @@
   </div>
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="shadow overflow-hidden  sm:rounded-lg">
+      <div class="overflow-hidden sm:rounded-lg">
           <table class="min-w-full divide-y divide-gray-200">
             <thead>
               <tr class="text-left text-xs text-black font-semibold uppercase tracking-wider">
-                <th scope="col" class=" px-2 py-3">
+                <th scope="col" class="px-10 py-8">
                   {{__('tasks.task_name')}}
                 </th>
-                <th scope="col" class="px-2 py-3">
+                <th scope="col" class="px-10 py-8">
                   {{__('tasks.task_description')}}
                 </th>
-                <th scope="col" class="px-2 py-3 relative">
-                  <span>{{__('tasks.created_at')}}</span>
-                  <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'created_at', 'order' => request('sort') === 'created_at' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                <th scope="col" class="px-10 py-8">
+                  
+                  <a class="flex gap-2 items-center" href="{{ route('dashboard', ['sort' => 'created_at', 'order' => request('sort') === 'created_at' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                    <span>{{__('tasks.created_at')}}</span>
                     <x-icons.sort />
                   </a>
                 </th>
-                <th scope="col" class="px-2 py-3 relative">
-                  <span>{{__('tasks.due_date')}}</span>
-                  <a class="absolute translate-x-1/2" href="{{ route('dashboard', ['sort' => 'due_date', 'order' => request('sort') === 'due_date' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                <th scope="col" class="px-10 py-8">
+                  <a class="flex gap-2 items-center" href="{{ route('dashboard', ['sort' => 'due_date', 'order' => request('sort') === 'due_date' && request('order') === 'asc' ? 'desc' : 'asc'] + request()->except('sort', 'order')) }}">
+                    <span>{{__('tasks.due_date')}}</span>
                     <x-icons.sort />
                   </a>
                 </th>
-                <th scope="col" class="px-2 py-3">
+                <th scope="col" class="px-10 py-8">
                   {{__('tasks.actions')}}
                 </th>
               </tr>
@@ -56,20 +57,20 @@
               @foreach ($tasks as $task)
                 
               <tr>
-                <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[150px]">
+                <td class="px-10 py-4 whitespace-nowrap text-custom-gray truncate max-w-[150px]">
                   {{$task->name}}
                 </td>
-                <td class="px-2 py-4 whitespace-nowrap text-custom-gray truncate max-w-[250px]">
+                <td class="px-10 py-4 whitespace-nowrap text-custom-gray truncate max-w-[250px]">
                   {{$task->description}}
                 </td>
-                <td class="px-2 py-4 whitespace-nowrap text-custom-gray">
+                <td class="px-10 py-4 whitespace-nowrap text-custom-gray">
                   {{$task->created_at->format('Y-m-d')}}
                 </td>
-                <td class="px-2 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
+                <td class="px-10 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
                   {{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') }}
               </td>
               
-                <td class="px-2 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
+                <td class="px-10 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
                   <a href="{{ route('dashboard.edit',$task->id) }}" class=" hover:text-black underline">{{__('tasks.edit')}}</a>
                   <form action="{{ route('tasks.destroy', $task->id) }}" method="POST" class="inline">
                     @csrf

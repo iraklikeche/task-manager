@@ -8,16 +8,16 @@
             class="inline-block h-full w-full" />
         </div>
   
-        <div class="grid grid-cols-1 grid-rows-3 h-full items-center">
-            <div class=" flex gap-32 mb-4 mt-auto">
-                <div class="">      
+        <div class="grid grid-cols-1 grid-rows-3 h-full items-center min-w-[28rem]">
+            <div class=" flex gap-32 mb-4 mt-auto justify-between">
+                <div>      
 
                     <h2 class="font-bold text-xl uppercase">{{ __('auth.welcome_back') }}</h2>
                     <p class="text-xs text-[#6a737d]">{{ __('auth.enter_details') }}</p>
                 </div>
                 <img src="{{ asset('images/defaults/smile.png') }}" alt=""/>
             </div>
-            <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-4" novalidate>
+            <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-6" novalidate>
                 @csrf
                 <x-form.input type="email"  placeholder="auth.email_placeholder" name="email" value="{{ old('email') }}" required />
                 
@@ -36,7 +36,7 @@
             </form>
            
   
-            <x-langButtons />
+            <x-langButtons :customClasses="'mt-auto flex justify-center items-center gap-4'" />
 
 
         </div>

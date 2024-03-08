@@ -15,7 +15,7 @@
       </a>
     </div>
   </div>
-  <div class=pl-2>
+  <div class="pl-2 mt-14">
     <h2 class="text-[#6a737d] text-sm font-semibold mb-4">
       {{__('tasks.task_description')}}
     </h2>
@@ -25,11 +25,11 @@
     <div class="flex gap-32 mt-16">
       <div class="flex flex-col gap-2">
         <span class="text-[#6a737d] ">{{__('tasks.created_at')}}</span>
-        <span>{{$task->created_at}}</span>
+        <span>{{ \Carbon\Carbon::parse($task->created_at)->format('d/m/y') }}</span>
       </div>
       <div class="flex flex-col gap-2">
         <span class="text-[#6a737d] ">{{__('tasks.due_date')}}</span>
-        <span>{{\Carbon\Carbon::parse($task->due_date)->format('Y-m-d')}}</span>
+        <span>{{ \Carbon\Carbon::parse($task->due_date)->format('d/m/y') }}</span>
       </div>
     </div>
   </div>
