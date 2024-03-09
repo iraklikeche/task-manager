@@ -7,7 +7,7 @@
 >
 
   <a href="{{ url()->previous() }}" class="flex items-center gap-4 uppercase font-semibold">
-    <x-icons.arrowBack /> <span>Back</span>
+    <x-icons.arrowBack /> <span>{{__('profile.back')}}  </span>
   </a>
 
 </x-taskForm-layout>
