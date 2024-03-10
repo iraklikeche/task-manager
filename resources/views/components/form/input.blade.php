@@ -17,6 +17,8 @@
         <label for="{{$name}}" class="absolute left-2 top-4 text-gray-600 cursor-text peer-focus:text-xs                peer-focus:-top-4 peer-focus:text-gray-600  peer-valid:text-xs peer-valid:-top-4 peer-valid:text-gray-600   transition-all">
                 {{ __($placeholder) }}
         </label>
+<div class="min-h-6">
 
         <x-form.error name="{{$name}}"  />
+</div>
 </div>

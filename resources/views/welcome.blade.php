@@ -9,10 +9,10 @@
         </div>
   
         <div class="grid grid-cols-1 grid-rows-3 h-full items-center min-w-[28rem]">
-            <div class=" flex gap-32 mb-4 mt-auto justify-between">
+            <div class=" flex gap-32 mt-auto justify-between">
                 <div>      
 
-                    <h2 class="font-bold text-xl uppercase">{{ __('auth.welcome_back') }}</h2>
+                    <h2 class="font-bold text-2xl uppercase">{{ __('auth.welcome_back') }}</h2>
                     <p class="text-xs text-[#6a737d]">{{ __('auth.enter_details') }}</p>
                 </div>
                 <img src="{{ asset('images/defaults/smile.png') }}" alt=""/>
