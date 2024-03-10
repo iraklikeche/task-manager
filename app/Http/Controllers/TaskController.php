@@ -50,7 +50,7 @@ class TaskController extends Controller
 		$task->due_date = $validated['due_date'];
 		$task->save();
 
-		return redirect()->route('dashboard')->with('success', 'Task updated successfully!');
+		return redirect()->route('dashboard')->with('success', __('tasks.success_update'));
 	}
 
 	public function store(StoreTaskRequest $request): RedirectResponse
@@ -69,13 +69,13 @@ class TaskController extends Controller
 			'due_date'    => $validated['due_date'],
 		]);
 
-		return redirect()->route('dashboard')->with('success', 'Task created successfully!');
+		return redirect()->route('dashboard')->with('success', __('tasks.success_create'));
 	}
 
 	public function destroy(Task $task): RedirectResponse
 	{
 		$task->delete();
-		return redirect()->route('dashboard')->with('delete', 'Task deleted successfully.');
+		return redirect()->route('dashboard')->with('delete', __('tasks.success_delete'));
 	}
 
 	public function deleteOverdueTasks(): RedirectResponse
@@ -83,6 +83,6 @@ class TaskController extends Controller
 		$user = auth()->user();
 		$user->tasks()->where('due_date', '<', now())->delete();
 
-		return back()->with('delete', 'All overdue tasks have been deleted.');
+		return back()->with('delete', __('tasks.success_delete_overdue'));
 	}
 }

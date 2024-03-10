@@ -21,4 +21,7 @@ return [
 	'upload_profile'                                                                                        => 'upload Profile',
 	'upload_cover'                                                                                          => 'upload Cover',
 	'change'                                                                                                => 'Change',
+	'back'                                                                                                  => 'back',
+	'make_changes'                                                                                          => 'Please make changes',
+	'success'                                                                                               => 'Profile successfully updated.',
 ];
