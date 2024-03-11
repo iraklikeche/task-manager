@@ -9,17 +9,16 @@
         </div>
   
         <div class="grid grid-cols-1 grid-rows-3 h-full items-center min-w-[28rem]">
-            <div class=" flex gap-32 mb-4 mt-auto justify-between">
+            <div class=" flex gap-32 mt-auto justify-between">
                 <div>      
-
-                    <h2 class="font-bold text-xl uppercase">{{ __('auth.welcome_back') }}</h2>
+                    <h2 class="font-bold text-2xl uppercase">{{ __('auth.welcome_back') }}</h2>
                     <p class="text-xs text-[#6a737d]">{{ __('auth.enter_details') }}</p>
                 </div>
                 <img src="{{ asset('images/defaults/smile.png') }}" alt=""/>
             </div>
             <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-6" novalidate>
                 @csrf
-                <x-form.input type="email"  placeholder="auth.email_placeholder" name="email" value="{{ old('email') }}" required />
+                <x-form.input type="email" placeholder="auth.email_placeholder" name="email" value="{{ old('email') }}" required />
                 
                 <div x-data="{ showPassword: false }" class="relative">
                     <x-form.input x-bind:type="showPassword ? 'text' : 'password'" placeholder="auth.password_placeholder" name="password" required />
