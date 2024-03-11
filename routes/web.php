@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\LocalizationController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\ProfileController;
@@ -19,8 +18,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/localization/{locale}', LocalizationController::class)->name('localization');
-
-Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('guest');
 
 Route::view('/', 'welcome')->name('home')->middleware('guest');
 
