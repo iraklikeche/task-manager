@@ -47,7 +47,7 @@ return [
 	'distinct'          => 'The :attribute field has a duplicate value.',
 	'doesnt_end_with'   => 'The :attribute field must not end with one of the following: :values.',
 	'doesnt_start_with' => 'The :attribute field must not start with one of the following: :values.',
-	'email'             => 'The :attribute field must be a valid email address.',
+	'email'             => ':attribute უნდა იყოს მოქმედი.',
 	'ends_with'         => 'The :attribute field must end with one of the following: :values.',
 	'enum'              => 'The selected :attribute is invalid.',
 	'exists'            => 'The selected :attribute is invalid.',
@@ -130,7 +130,7 @@ return [
 	'prohibited_if'        => 'The :attribute field is prohibited when :other is :value.',
 	'prohibited_unless'    => 'The :attribute field is prohibited unless :other is in :values.',
 	'prohibits'            => 'The :attribute field prohibits :other from being present.',
-	'regex'                => 'The :attribute field format is invalid.',
+	'regex'                => ':attribute ველი არ აკმაყოფილებს მოთხოვნას.',
 	'required'             => ':attribute სავალდებულოა',
 	'required_array_keys'  => 'The :attribute field must contain entries for: :values.',
 	'required_if'          => 'The :attribute field is required when :other is :value.',
@@ -186,10 +186,14 @@ return [
 	*/
 
 	'attributes' => [
-		'name.en'        => 'სახელი',
-		'name.ka'        => 'სახელი',
-		'description.en' => 'აღწერა',
-		'description.ka' => 'აღწერა',
-		'due_date'       => 'ბოლო ვადა',
+		'name.en'                      => 'სახელი',
+		'name.ka'                      => 'სახელი',
+		'description.en'               => 'აღწერა',
+		'description.ka'               => 'აღწერა',
+		'due_date'                     => 'ბოლო ვადა',
+		'email'                        => 'ელ-ფოსტა',
+		'password'                     => 'პაროლი',
+		'current_password'             => 'მიმდინარე პაროლი',
+		'new_password'                 => 'ახალი პაროლი',
 	],
 ];

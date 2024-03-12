@@ -12,21 +12,22 @@
             <div class=" flex gap-32 mt-auto justify-between">
                 <div>      
                     <h2 class="font-bold text-2xl uppercase">{{ __('auth.welcome_back') }}</h2>
-                    <p class="text-xs text-[#6a737d]">{{ __('auth.enter_details') }}</p>
+                    <p class="text-sm text-[#6a737d]">{{ __('auth.enter_details') }}</p>
                 </div>
                 <img src="{{ asset('images/defaults/smile.png') }}" alt=""/>
             </div>
             <form method="POST" action="{{ route('login') }}" class="flex flex-col gap-6" novalidate>
                 @csrf
-                <x-form.input type="email" placeholder="auth.email_placeholder" name="email" value="{{ old('email') }}" required />
+                <x-form.input type="email" placeholder="auth.email_placeholder" name="email" value="{{ old('email') }}" required applyMinHeight="true" />
+
                 
                 <div x-data="{ showPassword: false }" class="relative">
-                    <x-form.input x-bind:type="showPassword ? 'text' : 'password'" placeholder="auth.password_placeholder" name="password" required />
-                    <span x-on:click="showPassword = !showPassword" style="cursor: pointer;" class='absolute top-[30%] right-[5%]'>
+                    <x-form.input x-bind:type="showPassword ? 'text' : 'password'" placeholder="auth.password_placeholder" name="password" required applyMinHeight="true" />
+                    <span x-on:click="showPassword = !showPassword" style="cursor: pointer;" class='absolute top-[20%] right-[5%]'>
                         <x-icons.show />
                     </span>
                 </div>
-       
+
                 <div class="w-full">
                     <button class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-4 rounded-xl focus:outline-none focus:shadow-outline" type="submit">
                         {{ __('auth.login') }}
