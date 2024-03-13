@@ -28,9 +28,10 @@
         >
             {{ __($placeholder) }}
         </label>
-        <div :class="{ 'min-h-8': @js($applyMinHeight) }" class="mt-2">   
-            <x-form.error name="{{$name}}" />
+
+    <div class="mt-2 min-h-5">
+        <x-form.error name="{{ $name }}" />
     </div>
 
-    </div>
+</div>
     
