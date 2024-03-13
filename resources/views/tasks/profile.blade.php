@@ -17,7 +17,7 @@
         <x-form.error name="email" />
     </div>
 
-      <div class="flex flex-col gap-8">
+      <div class="flex flex-col gap-4 mt-2">
         <h2 class="uppercase text-[#2f363d] text-center">{{__('profile.change_password')}}</h2>
         <x-form.input type="password" placeholder="profile.current_password" name="current_password" required/>
         <x-form.input type="password" placeholder="profile.new_password" name="new_password" value="" required/>
@@ -27,7 +27,7 @@
         <h2 class="uppercase text-[#2f363d] text-center mb-6">{{__('profile.change_photo')}}</h2>
         <div class="flex items-center gap-4 relative">
           <img id="img-avatar" src="{{ auth()->user()->profile_image ? Storage::url(auth()->user()->profile_image) : asset('images/defaults/avatar.png') }}" class="w-20" alt="Profile Image" />
-          <label class=" inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
+          <label class="flex items-center text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4 whitespace-nowrap"><x-icons.upload />{{__('profile.upload_profile')}}</span>
             <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}"  onchange="changeImage(event,'img-avatar')" hidden />
           </label>
@@ -42,7 +42,7 @@
             class="w-20" />
 
 
-          <label class="inline-block text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
+          <label class="flex items-center text-custom-blue hover:custom-blue cursor-pointer border border-custom-blue py-3 px-8 rounded-xl uppercase text-xs">
             <span class="text-base leading-normal flex gap-4"><x-icons.upload />{{__('profile.upload_cover')}}</span>
             <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" onchange="changeImage(event,'img-cover_image')" hidden />
           </label>

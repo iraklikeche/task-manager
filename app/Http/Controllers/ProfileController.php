@@ -15,7 +15,7 @@ class ProfileController extends Controller
 		$user = Auth::user();
 		$attributes = $request->validated();
 		if (empty($attributes['new_password']) && empty($request->hasFile('avatar')) && empty($request->hasFile('cover_image'))) {
-			return back()->with('danger', __('profile.make_changes'));
+			return back()->withErrors(['current_password' => __('profile.current_password_required'), 'new_password' => __('profile.new_password_required')]);
 		}
 
 		if (!empty($attributes['new_password'])) {
@@ -39,6 +39,6 @@ class ProfileController extends Controller
 
 		$user->save();
 
-		return back()->with('success', 'Profile successfully updated.');
+		return back()->with('success', __('profile.success'));
 	}
 }

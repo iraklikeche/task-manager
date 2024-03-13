@@ -1,5 +1,5 @@
 <x-panel-layout>
-  
+ 
   <div class="flex justify-between items-center mb-6">
     <h1 class="uppercase text-3xl font-semibold pl-2">{{__('tasks.task_heading')}}</h1>
     <div class="flex gap-4">

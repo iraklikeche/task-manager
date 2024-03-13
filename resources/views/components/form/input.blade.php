@@ -1,9 +1,10 @@
-@props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => '', 'readonly' => false])
+@props(['name', 'type' => 'text', 'placeholder', 'value' => '', 'class' => '', 'readonly' => false,'applyMinHeight' => false])
 @php
     $dotNotation = str_replace(['[', ']'], ['.', ''], $name);
+
 @endphp
 
-<div class="relative" x-data="{ inputValue: '{{ old('email') ?? $value }}' }">
+<div class="relative" x-data="{ inputValue: '{{ $type === 'email' ? old('email', $value) : $value }}' }">
         <input 
             x-model="inputValue"
             {{$attributes}}
@@ -22,13 +23,15 @@
 
         <label 
             for="{{$name}}"  
-            class="absolute left-2 top-4 text-gray-600 cursor-text peer-focus:text-xs   peer-focus:-top-4 peer-focus:text-gray-600 transition-all"
+            class="absolute left-3 top-4 text-gray-600 cursor-text peer-focus:text-xs   peer-focus:-top-4 peer-focus:text-gray-600 transition-all"
             :class="{ '-top-4 text-xs': inputValue, 'top-4': !inputValue }" 
         >
             {{ __($placeholder) }}
         </label>
-    <div class="min-h-6">   
-        <x-form.error name="{{$name}}" />
+
+    <div class="mt-2 min-h-5">
+        <x-form.error name="{{ $name }}" />
     </div>
-    </div>
+
+</div>
     

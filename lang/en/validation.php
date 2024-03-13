@@ -186,10 +186,12 @@ return [
 	*/
 
 	'attributes' => [
-		'name.en'          => 'name',
-		'name.ka'          => 'name',
-		'description.en'   => 'description',
-		'description.ka'   => 'description',
-		'due_date'         => 'due date',
+		'name.en'                      => 'name',
+		'name.ka'                      => 'name',
+		'description.en'               => 'description',
+		'description.ka'               => 'description',
+		'due_date'                     => 'due date',
+		// 'current_password'             => 'current password',
+		// 'new_password'                 => 'new password',
 	],
 ];
