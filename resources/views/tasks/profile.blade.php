@@ -31,7 +31,7 @@
             <span class="text-base leading-normal flex gap-4 whitespace-nowrap"><x-icons.upload />{{__('profile.upload_profile')}}</span>
             <x-form.input type="file" name="avatar" placeholder="" value="{{ old('avatar') }}"  onchange="changeImage(event,'img-avatar')" hidden />
           </label>
-          <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-35%] hidden">{{__('tasks.delete')}}</button>
+          <button onclick="removeImage('avatar')" type="button" id="delete-img-avatar" class="absolute uppercase right-[-25%] hidden">{{__('tasks.delete')}}</button>
         </div>
         <div class="flex items-center gap-4 relative">
   
@@ -46,12 +46,14 @@
             <span class="text-base leading-normal flex gap-4"><x-icons.upload />{{__('profile.upload_cover')}}</span>
             <x-form.input type="file" name="cover_image" placeholder="" value="{{ old('avatar') }}" onchange="changeImage(event,'img-cover_image')" hidden />
           </label>
-          <button onclick="removeImage('cover_image')" type="button" id="delete-img-cover_image" class="uppercase absolute right-[-35%] hidden">{{__('tasks.delete')}}</button>
+          <button onclick="removeImage('cover_image')" type="button" id="delete-img-cover_image" class="uppercase absolute right-[-20%] hidden">{{__('tasks.delete')}}</button>
         </div>
       </div>
       <button type="submit" class="bg-[#499af9] uppercase font-semibold py-4 rounded-xl mt-4 text-white">{{__('profile.change')}}</button>
     </form>
   </div>
+  <x-langButtons :customClasses="'mt-auto flex justify-end items-center gap-4 sticky bottom-56'" />
+
 </x-panel-layout>
 
 
