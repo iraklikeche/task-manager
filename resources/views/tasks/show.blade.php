@@ -33,4 +33,6 @@
       </div>
     </div>
   </div>
+  <x-langButtons />
+
 </x-panel-layout>

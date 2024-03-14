@@ -91,4 +91,6 @@
     <div class="mt-10">
       {{$tasks->links()}}
     </div>
+    <x-langButtons />
+
   </x-panel-layout>

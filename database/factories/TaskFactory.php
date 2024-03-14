@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Faker\Factory as GeorgianFactory;
@@ -18,8 +19,10 @@ class TaskFactory extends Factory
 	 */
 	public function definition(): array
 	{
+		$user = User::factory()->create();
 		return [
-			'name' => [
+			'user_id' => $user->id,
+			'name'    => [
 				'en' => $this->faker->sentence(),
 				'ka' => GeorgianFactory::create('ka_GE')->realText(10),
 			],

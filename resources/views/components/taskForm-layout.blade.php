@@ -38,4 +38,6 @@
   </button>
 </form>
  </div>
+ <x-langButtons />
+
 </x-panel-layout>
