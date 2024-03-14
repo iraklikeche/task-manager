@@ -19,9 +19,8 @@ class TaskFactory extends Factory
 	 */
 	public function definition(): array
 	{
-		$user = User::factory()->create();
 		return [
-			'user_id' => $user->id,
+			'user_id' => User::factory()->create(),
 			'name'    => [
 				'en' => $this->faker->sentence(),
 				'ka' => GeorgianFactory::create('ka_GE')->realText(10),

@@ -156,6 +156,7 @@ return [
 	'url'         => 'The :attribute field must be a valid URL.',
 	'ulid'        => 'The :attribute field must be a valid ULID.',
 	'uuid'        => 'The :attribute field must be a valid UUID.',
+	'credentials' => 'The provided credentials do not match our records.',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -191,7 +192,6 @@ return [
 		'description.en'               => 'description',
 		'description.ka'               => 'description',
 		'due_date'                     => 'due date',
-		// 'current_password'             => 'current password',
-		// 'new_password'                 => 'new password',
+		// 'credentials'                  => 'The provided credentials do not match our records',
 	],
 ];

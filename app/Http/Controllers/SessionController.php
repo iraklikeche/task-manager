@@ -19,7 +19,7 @@ class SessionController extends Controller
 
 		return back()->withInput()
 		->withErrors([
-			'email' => 'The provided credentials do not match our records ',
+			'email' => __('validation.credentials'),
 		]);
 	}
 
