@@ -65,10 +65,10 @@
                   {{$task->description}}
                 </td>
                 <td class="px-10 py-4 whitespace-nowrap text-custom-gray">
-                  {{$task->created_at->format('Y-m-d')}}
+                  {{$task->created_at->format('d/m/Y') }}
                 </td>
                 <td class="px-10 py-4 whitespace-nowrap {{ \Carbon\Carbon::parse($task->due_date)->isPast() ? 'text-red-500' : 'text-custom-gray' }}">
-                  {{ \Carbon\Carbon::parse($task->due_date)->format('Y-m-d') }}
+                  {{ \Carbon\Carbon::parse($task->due_date)->format('d/m/Y')  }}
               </td>
               
                 <td class="px-10 py-4 whitespace-nowrap text-sm font-medium text-custom-gray-for-links">
