@@ -146,3 +146,4 @@ For more information about project standards, take a look at these docs:
 <a href="https://drawsql.app/teams/irakli/diagrams/tasks">Link to DrawSQL</a>
 
 <img src="public/images/drawsql.png" alt="drawSQL" />
+# task-manager
